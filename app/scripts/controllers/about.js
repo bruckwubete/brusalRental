@@ -18,25 +18,24 @@ angular.module('dvdRentalFrontendApp')
     vm.tvShows = [];
     vm.loadMovieView = loadMovieView;
     vm.exec = exec;
-    console.log(lubTmdbApi);
 
- function exec (type, method, query) {
-     lubTmdbApi[type][method]({
-         query: query
-     }).then(suc, err);
+ function exec (type, method, queryBy,query) {
+     var queries = {};
+     queries[queryBy] = query;
+     lubTmdbApi[type][method](queries).then(suc, err);
  }
 
 function  suc (result){
-    vm.tvShows.push(result);
+  for(var i=0; i<=result.data.results.length;i++){
+      vm.tvShows.push(result.data.results[i]);
+  }
 };
 
 function err (results) {
 }
 
     function activate(){
-        for(var i= 1; i<=20; i ++){
-            exec('tv','tv',i);
-         }
+            exec('tv', 'popular','');
     }
     activate();
 

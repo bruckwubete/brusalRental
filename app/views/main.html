@@ -1,24 +1,13 @@
-<div flex-offset="15">
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="5"
-        md-row-height-gt-md="1:1" md-row-height="2:2"
+<div>
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
+        md-row-height-gt-md="1:1" md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px">
-  <md-grid-tile md-rowspan="1" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                 ng-repeat = " movie in main.movies">
-    <md-card layout="row" flex="80">
-      <div flex="40">
-           <img ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"class="md-media-lg card-media"
+  <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+                 ng-repeat = " movie in main.movies | limitTo : 20">
+    <md-card>
+           <img ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"
+                class="md-media-lg card-media"
                 alt="movie poster image">
-      </div>
-      <div flex layout-align="center center">
-      <md-card-title layout="row">
-          <md-card-title-text>
-            <sapn class="title result">{{movie.title}}</span>
-          </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-          <p flex ="100" class="md-body-2">{{movie.overview}}</p>
-      </md-card-content>
-    </div>
     </md-card>
   </md-grid-tile>
 </md-grid-list>

@@ -101,7 +101,8 @@ angular.module('lub-tmdb-http', ['lub-tmdb-config'])
     return function (options) {
         var url = lubTmdbBaseURL + options.url;
         var params = angular.extend({}, options.params, {
-            api_key:lubTmdbApiKey
+            api_key:lubTmdbApiKey,
+            page : options.page
         });
         if (lubTmdbConnectionMethod === 'jsonp') {
             params.callback = 'JSON_CALLBACK';
@@ -239,6 +240,11 @@ angular.module('lub-tmdb-api-people', ['lub-tmdb-http'])
             return lubTmdbHTTP(angular.extend({}, options, {
                 url:'person/latest'
             }));
+        },
+        popular:function (options) {
+            return lubTmdbHTTP(angular.extend({}, options, {
+                url:'person/popular'
+            }));
         }
     };
 }]);
@@ -292,16 +298,6 @@ angular.module("lub-tmdb-api-tv", ['lub-tmdb-config', 'lub-tmdb-http'])
     var get = function (options, type) {
         var opts = options || {};
         var action = type === '' ? '' : ('/' + type);
-        if (noQuery.indexOf(type) >= 0) {
-            delete opts.query;
-        }
-        if (!opts.query) {
-            if (noQuery.indexOf(type) < 0) {
-                return $q.reject();
-            }
-        } else {
-            action = '/' + opts.query + action;
-        }
         return lubTmdbHTTP(angular.extend({}, opts, {
             url:'tv' + action
         }));

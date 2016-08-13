@@ -26,11 +26,9 @@ angular.module('dvdRentalFrontendApp')
      }
 
   function  suc (result){
-        console.log(result);
         for(var i=0; i<=result.data.results.length;i++){
             vm.movies.push(result.data.results[i]);
         }
-        console.log(vm.movies);
     };
 
   function err (results) {
