@@ -3,9 +3,9 @@
         md-row-height-gt-md="1:1" md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px">
   <md-grid-tile   md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                  ng-repeat = " show in about.tvShows | limitTo:20">
+                  ng-repeat = " show in shows.popularTvShows | limitTo:20">
     <md-card>
-           <img ng-click="about.loadMovieView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}"
+           <img ng-click="shows.loadShowView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}"
                 class="md-media-lg card-media"
                 alt="show poster image">
     </md-card>

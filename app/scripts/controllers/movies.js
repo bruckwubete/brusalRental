@@ -8,7 +8,7 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-    .controller('MainCtrl', function (lubTmdbApi) {
+    .controller('MoviesCtrl', function (lubTmdbApi, $location) {
         var vm = this;
         vm.awesomeThings = [
             'HTML5 Boilerplate',
@@ -16,8 +16,9 @@ angular.module('dvdRentalFrontendApp')
             'Karma'
         ];
 
-        vm.movies = [];
+        vm.popularMovies = [];
         vm.exec = exec;
+        vm.loadMovieView = loadMovieView;
 
      function exec (type, method, query) {
          lubTmdbApi[type][method]({
@@ -27,7 +28,7 @@ angular.module('dvdRentalFrontendApp')
 
   function  suc (result){
         for(var i=0; i<=result.data.results.length;i++){
-            vm.movies.push(result.data.results[i]);
+            vm.popularMovies.push(result.data.results[i]);
         }
     };
 
@@ -40,4 +41,9 @@ angular.module('dvdRentalFrontendApp')
 
         }
         activate();
+
+        function loadMovieView(id){
+            console.log("here");
+            $location.path('/movieView/'+id+'/');
+        }
     });

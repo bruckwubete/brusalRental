@@ -8,15 +8,15 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('AboutCtrl', function (lubTmdbApi,$location) {
+  .controller('ShowsCtrl', function (lubTmdbApi,$location) {
     var vm = this
     vm.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    vm.tvShows = [];
-    vm.loadMovieView = loadMovieView;
+    vm.popularTvShows = [];
+    vm.loadShowView = loadShowView;
     vm.exec = exec;
 
  function exec (type, method, queryBy,query) {
@@ -27,7 +27,7 @@ angular.module('dvdRentalFrontendApp')
 
 function  suc (result){
   for(var i=0; i<=result.data.results.length;i++){
-      vm.tvShows.push(result.data.results[i]);
+      vm.popularTvShows.push(result.data.results[i]);
   }
 };
 
@@ -39,7 +39,7 @@ function err (results) {
     }
     activate();
 
-    function loadMovieView(id){
-      $location.path('/movieView/'+id+'/');
+    function loadShowView(id){
+      $location.path('/showView/'+id+'/');
     }
   });

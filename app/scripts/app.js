@@ -24,14 +24,14 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/movies.html',
+        controller: 'MoviesCtrl',
+        controllerAs: 'movies'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/shows', {
+        templateUrl: 'views/shows.html',
+        controller: 'ShowsCtrl',
+        controllerAs: 'shows'
       })
       .when('/people', {
         templateUrl: 'views/people.html',
@@ -43,12 +43,12 @@ angular
         controller: 'MovieviewCtrl',
         controllerAs: 'movieView'
       })
-      .when('/showView', {
+      .when('/showView/:id/', {
         templateUrl: 'views/showview.html',
         controller: 'ShowviewCtrl',
         controllerAs: 'showView'
       })
-      .when('/personView', {
+      .when('/personView/:id', {
         templateUrl: 'views/personview.html',
         controller: 'PersonviewCtrl',
         controllerAs: 'personView'
