@@ -41,7 +41,12 @@ angular
       .when('/movieView/:id/', {
         templateUrl: 'views/movieview.html',
         controller: 'MovieviewCtrl',
-        controllerAs: 'movieView'
+        controllerAs: 'movieView',
+        resolve : {
+            showHeaderSlideshow : function(){
+                return false;
+            }
+        }
       })
       .when('/showView/:id/', {
         templateUrl: 'views/showview.html',
