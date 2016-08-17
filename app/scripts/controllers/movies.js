@@ -1,3 +1,4 @@
+(function(){
 'use strict';
 
 /**
@@ -47,3 +48,4 @@ angular.module('dvdRentalFrontendApp')
             $location.path('/movieView/'+id+'/');
         }
     });
+})()
