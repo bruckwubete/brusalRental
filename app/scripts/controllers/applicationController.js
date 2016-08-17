@@ -7,6 +7,7 @@
 
         var vm = this;
         vm.showHeader = showHeader;
+        vm.loadView = loadView;
 
         function showHeader(){
           try {
@@ -18,6 +19,11 @@
           }catch(error){
               return true;
           }
+        }
+        
+        function loadView(view){
+             console.log("here");
+            $state.go(view);
         }
     }
 })();
