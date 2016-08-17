@@ -22,25 +22,58 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Just Kick It</h2>
-      </div>
-      <div class="mdl-card__menu">
-         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-         </button>
-       </div>
-     </div>
-
-        <div ui-view></div>
-
+    <div ng-controller="applicaitonController as appCtrl" id="container">
+        <div ng-show="appCtrl.showHeader()" class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Just Kick It</h2>
+            </div>
+            <div class="mdl-card__menu">
+              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+              </button>
+              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">add</i>
+              </button>
+              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+              </button>
+              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">group</i>
+              </button>
+            </div>
+        </div>
+   
+    <div id="container">
+        <md-tabs md-stretch-tabs="always">
+          <md-tab label="Movies" md-on-select="appCtrl.loadView('movies')">
+            <div layout="column" layout-fill flex ="100">
+            <md-tab-content>
+              <div ui-view></div>
+            </md-tab-content>
+            <div>
+          </md-tab>
+          <md-tab label="Shows"  md-on-select="appCtrl.loadView('shows')">
+            <div layout="column" layout-fill flex ="100" >
+            <md-tab-content>
+              <div ui-view></div>
+            </md-tab-content>
+          </div>
+          </md-tab>
+          <md-tab label="People"  md-on-select="appCtrl.loadView('people')">
+            <div layout="column" layout-fill flex ="100" >
+            <md-tab-content>
+              <div ui-view></div>
+            </md-tab-content>
+            <div>
+          </md-tab>
+        </md-tabs>
+    </div>
+   
+  </div>
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -62,6 +95,7 @@
         <script src="scripts/app.js"></script>
         <script src="/app.route.js"></script>
         <script src="scripts/services/moviesDatabaseService.js"></script>
+        <script src="scripts/controllers/applicationController.js"></script>
         <script src="scripts/controllers/movies.js"></script>
         <script src="scripts/controllers/shows.js"></script>
         <script src="scripts/controllers/people.js"></script>
