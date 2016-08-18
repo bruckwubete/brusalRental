@@ -3,19 +3,12 @@
 
   angular.module('dvdRentalFrontendApp')
 
-      .directive('tabClickListener', function(){
+      .directive('tabClickListener', function($state){
           return {
               restrict: 'A',
-              link: function(scope, element, attrs) {
-                        console.log(element);
-                        console.log(scope);
-                        console.log(attrs);
-
+              link: function(scope, element, attrs, ctrl) {
                           element.bind('click', function(event) {
-                               console.log(element);
-                               console.log(scope);
-                               console.log(attrs);
-                              $state.go('movies');
+                              $state.go(attrs['tabClickListener']);
                     });
                }
           };

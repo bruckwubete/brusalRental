@@ -58,21 +58,21 @@
 
     <div id="container" flex="100">
         <md-tabs md-stretch-tabs="always" md-auto-select>
-          <md-tab label="Movies" md-on-select="appCtrl.loadView('movies')">
+          <md-tab label="Movies" tab-click-listener="movies">
             <div layout="column" layout-fill flex ="100">
             <md-tab-content>
               <div ui-view></div>
             </md-tab-content>
             </div>
           </md-tab>
-          <md-tab label="Shows"  md-on-select="appCtrl.loadView('shows')">
+          <md-tab label="Shows" tab-click-listener="shows">
             <div layout="column" layout-fill flex ="100" >
             <md-tab-content>
               <div ui-view></div>
             </md-tab-content>
           </div>
           </md-tab>
-          <md-tab label="People"  md-on-select="appCtrl.loadView('people')">
+          <md-tab label="People" tab-click-listener="people">
             <div layout="column" layout-fill flex ="100" >
             <md-tab-content>
               <div ui-view></div>
@@ -116,7 +116,7 @@
         <script src="scripts/controllers/movieview.js"></script>
         <script src="scripts/controllers/showview.js"></script>
         <script src="scripts/controllers/personview.js"></script>
-        <script src="scripts/directives/tabClickListener.js"></script>
+        <script src="scripts/directives/tabClicklistener.js"></script>
         <script src="scripts/vendors/lub-tmdb.js"></script>
         <!-- endbuild -->
 </body>

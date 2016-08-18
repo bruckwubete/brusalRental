@@ -44,7 +44,6 @@ angular.module('dvdRentalFrontendApp')
         activate();
 
         function loadMovieView(id){
-            console.log("here");
             $location.path('/movieView/'+id+'/');
         }
     });
