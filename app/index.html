@@ -47,19 +47,17 @@
         class="md-sidenav-left"
         md-component-id="left"
         md-is-locked-open="$mdMedia('gt-md')"
-        md-disable-backdrop
-        md-whiteframe="4">
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Categories</h1>
-      </md-toolbar>
+        md-disable-backdrop>
+
+        <span class="md-tabs md-tab md-tab-label md-stretch-tabs">Categories</span>
       <md-content layout-padding id="container">
         Here
-         
+
       </md-content>
     </md-sidenav>
-    
+
     <div id="container" flex="100">
-        <md-tabs md-stretch-tabs="always">
+        <md-tabs md-stretch-tabs="always" md-auto-select>
           <md-tab label="Movies" md-on-select="appCtrl.loadView('movies')">
             <div layout="column" layout-fill flex ="100">
             <md-tab-content>
@@ -84,7 +82,7 @@
         </md-tabs>
     </div>
   </div>
-    
+
   </div>
     <div class="footer">
       <div class="container">
@@ -118,6 +116,7 @@
         <script src="scripts/controllers/movieview.js"></script>
         <script src="scripts/controllers/showview.js"></script>
         <script src="scripts/controllers/personview.js"></script>
+        <script src="scripts/directives/tabClickListener.js"></script>
         <script src="scripts/vendors/lub-tmdb.js"></script>
         <!-- endbuild -->
 </body>
