@@ -32,7 +32,7 @@
             controller: 'MovieviewCtrl',
             controllerAs: 'movieView',
             data : {
-                showHeaderSlideshow : false
+                showHeaderSlideshow : true
             }
           })
           .state('showView', {
@@ -41,7 +41,7 @@
             controller: 'ShowviewCtrl',
             controllerAs: 'showView',
             data : {
-                showHeaderSlideshow : false
+                showHeaderSlideshow : true
             }
           })
           .state('personView', {
@@ -50,7 +50,7 @@
             controller: 'PersonviewCtrl',
             controllerAs: 'personView',
             data : {
-                showHeaderSlideshow : false
+                showHeaderSlideshow : true
             }
           })
       });

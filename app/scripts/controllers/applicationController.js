@@ -12,7 +12,7 @@
         function showHeader(){
           try {
               if(angular.isDefined($state.current.data) && angular.isDefined($state.current.data.showHeaderSlideshow)){
-                  return false;
+                  return $state.current.data.showHeaderSlideshow;
               }else{
                   return true;
               }
@@ -20,10 +20,9 @@
               return true;
           }
         }
-        
+
         function loadView(view){
-             console.log("here");
-            $state.go(view);
+             $state.go(view);
         }
     }
 })();

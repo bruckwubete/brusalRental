@@ -22,7 +22,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-controller="applicaitonController as appCtrl" id="container">
+    <div ng-controller="applicaitonController as appCtrl" id="container" ng-cloak>
         <div ng-show="appCtrl.showHeader()" class="demo-card-wide mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Just Kick It</h2>
@@ -42,33 +42,47 @@
               </button>
             </div>
         </div>
-   
-    <div id="container">
-        <md-tabs md-stretch-tabs="always">
-          <md-tab label="Movies" md-on-select="appCtrl.loadView('movies')">
+   <div layout="row" flex="100"  id="container">
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-disable-backdrop>
+
+        <span class="md-tabs md-tab md-tab-label md-stretch-tabs">Categories</span>
+      <md-content layout-padding id="container">
+        Here
+
+      </md-content>
+    </md-sidenav>
+
+    <div id="container" flex="100">
+        <md-tabs md-stretch-tabs="always" md-auto-select>
+          <md-tab label="Movies" tab-click-listener="movies">
             <div layout="column" layout-fill flex ="100">
             <md-tab-content>
               <div ui-view></div>
             </md-tab-content>
-            <div>
+            </div>
           </md-tab>
-          <md-tab label="Shows"  md-on-select="appCtrl.loadView('shows')">
+          <md-tab label="Shows" tab-click-listener="shows">
             <div layout="column" layout-fill flex ="100" >
             <md-tab-content>
               <div ui-view></div>
             </md-tab-content>
           </div>
           </md-tab>
-          <md-tab label="People"  md-on-select="appCtrl.loadView('people')">
+          <md-tab label="People" tab-click-listener="people">
             <div layout="column" layout-fill flex ="100" >
             <md-tab-content>
               <div ui-view></div>
             </md-tab-content>
-            <div>
+            </div>
           </md-tab>
         </md-tabs>
     </div>
-   
+  </div>
+
   </div>
     <div class="footer">
       <div class="container">
@@ -102,6 +116,7 @@
         <script src="scripts/controllers/movieview.js"></script>
         <script src="scripts/controllers/showview.js"></script>
         <script src="scripts/controllers/personview.js"></script>
+        <script src="scripts/directives/tabClicklistener.js"></script>
         <script src="scripts/vendors/lub-tmdb.js"></script>
         <!-- endbuild -->
 </body>
