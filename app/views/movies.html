@@ -5,7 +5,7 @@
   <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
                  ng-repeat = " movie in movies.popularMovies | limitTo : 20">
     <md-card>
-           <img ng-click="movies.loadMovieView(main.id)" ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"
+           <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"
                 class="md-media-lg card-media"
                 alt="movie poster image">
     </md-card>

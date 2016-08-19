@@ -9,7 +9,7 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-    .controller('MoviesCtrl', function (lubTmdbApi, $location) {
+    .controller('MoviesCtrl', function (lubTmdbApi, $state) {
         var vm = this;
         vm.awesomeThings = [
             'HTML5 Boilerplate',
@@ -44,7 +44,7 @@ angular.module('dvdRentalFrontendApp')
         activate();
 
         function loadMovieView(id){
-            $location.path('/movieView/'+id+'/');
+            $state.go('movieView', {id : id});
         }
     });
 })()
