@@ -8,7 +8,7 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('PeopleCtrl', function (lubTmdbApi, PeopleService, $location) {
+  .controller('PeopleCtrl', function (lubTmdbApi, PeopleService, $state) {
     var vm = this;
     vm.awesomeThings = [
       'HTML5 Boilerplate',
@@ -42,6 +42,6 @@ function err (results) {
     activate();
 
     function loadPersonView(id){
-      $location.path('/personView/'+id+'/');
+      $state.go('personView', {id : id});
     }
   });
