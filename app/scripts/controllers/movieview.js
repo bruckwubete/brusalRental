@@ -10,11 +10,6 @@
 angular.module('dvdRentalFrontendApp')
   .controller('MovieviewCtrl', function ($state, lubTmdbApi) {
     var vm = this;
-    vm.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
     vm.getMovie = getMovie;
     vm.movie = {};
     activate();

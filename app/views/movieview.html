@@ -1,1 +1,150 @@
 <mdb-backdrop path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path"></mdb-backdrop>
+
+
+<div class="container" mdb-loading loading="movieView.loading" id="movie-container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="page-header">{{movieView.movie.title}}
+        <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
+        <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
+        <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
+      </h1>
+    </div>
+  </div>
+
+<!--   <div class="row">
+    <div class="col-sm-12">
+      <span class="visible-xxs-block">✔ Visible on DOUBLE EXTRA!! small</span>
+      <span class="visible-xs-block">✔ Visible on xtra small</span>
+      <span class="visible-sm-block">✔ Visible on small</span>
+      <span class="visible-md-block">✔ Visible on medium</span>
+      <span class="visible-lg-block">✔ Visible on large</span>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+      <div class="movie-poster">
+        <img ng-if="movieView.movie.poster_path" class="media-object" width="300" ng-src="{{movieView.API_SETTINGS.baseImageUrl}}w300/{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
+
+        <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{movieView.movie.title}}" alt="{{movieView.movie.title}}" ng-if="!movieView.movie.poster_path && movieView.movie.title">
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieView.movie.genres" style="display:inline-block; margin:0 5px 10px 0;">
+            <h4 class="label label-primary" style="font-size: 100%;">{{genre.name}}</h4>
+          </a>
+          <hr style="margin: 10px 0;">
+        </div>
+      </div>
+
+      <!-- torrents -->
+      <div class="row">
+        <div class="col-sm-12">
+          <p ng-show="movieView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
+
+          <em ng-hide="movieView.movie.torrentsError || movieView.movie.torrents.length > 0 || movieView.torrentsLoading">No torrents available</em>
+
+          <em ng-show="movieView.movie.torrentsError">Something went wrong - we couldn't retrieve torrent information for this movie</em>
+
+          <div class="torrent-details" ng-repeat="torrent in movieView.movie.torrents">
+            <a ng-href="{{torrent.magnet_link}}"><i class="fa fa-magnet fa-rotate-180"></i> {{torrent.quality}} </a><i class="fa fa-play" ng-click="movieView.playTorrent(torrent)"></i>
+          </div>
+          <hr style="margin-top: 10px;">
+        </div>
+      </div>
+      <!-- end -->
+
+      <div class="row" ng-if="movieView.torrentUrl">
+        <div class="col-sm-12">
+          <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{movieView.movie.backdrop_path}}" style="width:100%">
+            <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+
+<!--       <div class="row">
+        <div class="col-sm-12">
+          <mdb-torrent-video source="'play-test/file.mp4'" type="video/mp4" poster="movieView.movie.backdrop_path"></mdb-torrent-video>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
+          <p ng-show="movieView.movie.tagline" class="text-upper text-bold text-xl">{{movieView.movie.tagline}}</p>
+          <p ng-show="movieView.movie.overview" style="font-size: 1.1em;">{{movieView.movie.overview}}</p>
+          <em ng-hide="movieView.movie.overview">No movie synopsis available</em>
+        </div>
+        <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
+          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
+            <p class="text-bold" style="font-size: 6.3em; margin:0;">{{movieView.movie.vote_average | number:1}}</p>
+            <p class="text-upper small" style="margin:0;">From {{movieView.movie.vote_count}} votes</p>
+          </div>
+
+          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
+            <uib-rating ng-show="app.user.id" ng-model="movieView.movie.account_states.rated.value" max="10" ng-change="movieView.ratingChanged()"></uib-rating>
+            <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <hr>
+          <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-4">
+              <p class="text-upper">Directed by</p>
+              <p ng-repeat="director in movieView.movie.directors">
+                <a ng-href="person/{{director.id}}">{{director.name}}</a>
+              </p>
+              <p ng-hide="movieView.movie.directors.length" class="text-muted">Not available</p>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-4">
+              <p class="text-upper">Written by</p>
+              <p ng-repeat="writer in movieView.movie.writers">
+                <a ng-href="person/{{writer.id}}">{{writer.name}} <em>({{writer.job}})</em></a>
+              </p>
+              <p ng-hide="movieView.movie.writers.length" class="text-muted">Not available</p>
+            </div>
+            <div class="col-xs-12 col-sm-5 col-md-4">
+              <button ng-hide="movieView.movie.account_states.watchlist" ng-click="movieView.toggleWatchlist()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Watchlist</button>
+              <button ng-show="movieView.movie.account_states.watchlist" ng-click="movieView.toggleWatchlist()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Watchlist</button>
+
+              <button ng-hide="movieView.movie.account_states.favorite" ng-click="movieView.toggleFavorite()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Favorites</button>
+              <button ng-show="movieView.movie.account_states.favorite" ng-click="movieView.toggleFavorite()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Favorites</button>
+
+              <button ng-click="movieView.playTrailer()" ng-show="movieView.getTrailer()" class="btn btn-block btn-lg btn-info"><i class="fa fa-video-camera"></i> Watch Trailer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="page-header">Cast</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in movieView.movie.credits.cast">
+      <div class="media">
+        <div class="pull-left">
+          <a ng-href="person/{{actor.id}}">
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <img ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="{{movieView.API_SETTINGS.baseImageUrl}}w92/{{actor.profile_path}}" alt="{{actor.name}}">
+            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
+          </a>
+        </div>
+        <div class="media-body">
+          <a ng-href="person/{{actor.id}}">
+            <p class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
