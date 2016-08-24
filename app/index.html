@@ -47,6 +47,7 @@
         class="md-sidenav-left"
         md-component-id="left"
         md-is-locked-open="$mdMedia('gt-md')"
+        ng-show="appCtrl.showSideNav()"
         md-disable-backdrop>
 
         <span class="md-tabs md-tab md-tab-label md-stretch-tabs">Categories</span>
@@ -58,6 +59,13 @@
 
     <div id="container" flex="100">
         <md-tabs md-stretch-tabs="always" md-auto-select>
+          <md-tab label="Discover" tab-click-listener="discover">
+            <div layout="column" layout-fill flex ="100" >
+            <md-tab-content>
+              <div ui-view></div>
+            </md-tab-content>
+            </div>
+          </md-tab>
           <md-tab label="Movies" tab-click-listener="movies">
             <div layout="column" layout-fill flex ="100">
             <md-tab-content>
@@ -119,6 +127,7 @@
         <script src="scripts/directives/tabClicklistener.js"></script>
         <script src="scripts/components/backdrop/backdrop.directive.js"></script>
         <script src="scripts/vendors/lub-tmdb.js"></script>
+        <script src="scripts/controllers/discover.js"></script>
         <!-- endbuild -->
 </body>
 </html>

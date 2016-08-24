@@ -11,12 +11,6 @@
 angular.module('dvdRentalFrontendApp')
     .controller('MoviesCtrl', function (lubTmdbApi, $state) {
         var vm = this;
-        vm.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-
         vm.popularMovies = [];
         vm.exec = exec;
         vm.loadMovieView = loadMovieView;
