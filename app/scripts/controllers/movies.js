@@ -14,6 +14,7 @@ angular.module('dvdRentalFrontendApp')
         vm.popularMovies = [];
         vm.exec = exec;
         vm.loadMovieView = loadMovieView;
+        vm.formBusy = flase;
 
      function exec (type, method, query) {
          lubTmdbApi[type][method]({
@@ -31,8 +32,9 @@ angular.module('dvdRentalFrontendApp')
     }
 
         function activate(){
-
+                vm.formBusy = true;
                 exec('movie','popular','');
+                vm.formBusy = false;
 
         }
         activate();

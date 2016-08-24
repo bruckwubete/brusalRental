@@ -1,4 +1,4 @@
-<div>
+<div ng-show="!movies.formBusy">
   <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
         md-row-height-gt-md="1:1" md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px">
@@ -12,3 +12,4 @@
   </md-grid-tile>
 </md-grid-list>
 </div>
+<div ng-show ="movies.formBusy" class="mdl-spinner mdl-js-spinner is-active"></div>
