@@ -10,7 +10,7 @@
 angular.module('dvdRentalFrontendApp')
   .controller('DiscoverCtrl', function (lubTmdbApi, $state) {
     var vm = this;
-    vm.popularMovies = [];
+    vm.popularItems = [];
     vm.exec = exec;
     vm.loadMovieView = loadMovieView;
 

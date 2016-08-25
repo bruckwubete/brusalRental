@@ -104,7 +104,18 @@ body {
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 500px;
+  width: 500px;
   background: url('../images/city.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__title {
+  transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 2s ease-in-out; /** Firefox **/
+    -o-transition: all 2s ease-in-out; /** Opera **/
+  transform: translate(350px,0);
+   -webkit-transform: translate(350px,0); /** Safari & Chrome **/
+   -o-transform: translate(350px,0); /** Opera **/
+   -moz-transform: translate(350px,0); /** Firefox **/
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
