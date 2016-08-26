@@ -23,7 +23,9 @@
 
     <!-- Add your site or application content here -->
     <div ng-controller="applicaitonController as appCtrl" id="container" ng-cloak>
-        <div ng-show="appCtrl.showHeader()" class="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div carousel3d ng-model = "appCtrl.slides" options="appCtrl.options">
+      <div carousel3d-slide ng-repeat="slide in appCtrl.slides">
+        <!--<div class="demo-card-wide mdl-card mdl-shadow--2dp" >
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Just Kick It</h2>
             </div>
@@ -41,6 +43,11 @@
                 <i class="material-icons">group</i>
               </button>
             </div>
+            </div> -->
+            <figure>
+              <img ng-src="http://image.tmdb.org/t/p/w500{{slide.poster_path}}"/>
+            </figure>
+        </div>
         </div>
    <div layout="row" flex="100"  id="container">
     <md-sidenav

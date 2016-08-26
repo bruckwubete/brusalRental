@@ -3,7 +3,7 @@
         md-row-height-gt-md="1:1" md-row-height="1:1"
         md-gutter="12px" md-gutter-gt-sm="8px">
   <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                 ng-repeat = " item in discoverCtrl.popularMovies | limitTo : 20">
+                 ng-repeat = " item in discoverCtrl.popularItems | limitTo : 20">
     <md-card>
            <img ng-click="discoverCtrl.loadMovieView(item.id)" ng-src="http://image.tmdb.org/t/p/w1920{{item.poster_path}}"
                 class="md-media-lg card-media"
