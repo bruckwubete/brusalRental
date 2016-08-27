@@ -2,22 +2,17 @@
 
 /**
  * @ngdoc function
- * @name dvdRentalFrontendApp.controller:PeopleCtrl
+ * @name dvdRentalFrontendApp.controller:DiscoverCtrl
  * @description
- * # PeopleCtrl
+ * # DiscoverCtrl
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('PeopleCtrl', function (lubTmdbApi, PeopleService, $state) {
+  .controller('DiscoverCtrl', function (lubTmdbApi, $state) {
     var vm = this;
-    vm.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    vm.peoples = [];
+    vm.popularItems = [];
     vm.exec = exec;
-    vm.loadPersonView = loadPersonView;
+    vm.loadMovieView = loadMovieView;
 
  function exec (type, method, query) {
      lubTmdbApi[type][method]({
@@ -27,7 +22,7 @@ angular.module('dvdRentalFrontendApp')
 
 function  suc (result){
     for(var i=0; i<=result.data.results.length;i++){
-        vm.peoples.push(result.data.results[i]);
+        vm.popularItems.push(result.data.results[i]);
     }
 };
 
@@ -36,12 +31,13 @@ function err (results) {
 
     function activate(){
 
-            exec('people','popular','');
+            exec('movie','popular','');
 
     }
     activate();
 
-    function loadPersonView(id){
-      $state.go('personView', {id : id});
+    function loadMovieView(id){
+        $state.go('movieView', {id : id});
     }
+
   });

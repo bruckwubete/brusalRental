@@ -4,27 +4,45 @@
          .config(function($stateProvider, $urlRouterProvider) {
            //
           // For any unmatched url, redirect to /state1
-          $urlRouterProvider.otherwise("/movies");
+          $urlRouterProvider.otherwise("/discover");
           //
           // Now set up the states
           $stateProvider
+          .state('discover', {
+            url : '/discover',
+            templateUrl: 'views/discover.html',
+            controller: 'DiscoverCtrl',
+            controllerAs: 'discoverCtrl',
+            data : {
+                showSideNav : false
+            }
+          })
           .state('movies', {
             url : '/movies',
             templateUrl: 'views/movies.html',
             controller: 'MoviesCtrl',
-            controllerAs: 'movies'
+            controllerAs: 'movies',
+            data : {
+                showSideNav : true
+            }
           })
           .state('shows', {
             url : '/shows',
             templateUrl: 'views/shows.html',
             controller: 'ShowsCtrl',
-            controllerAs: 'shows'
+            controllerAs: 'shows',
+            data : {
+                showSideNav : true
+            }
           })
           .state('people', {
             url : '/people',
             templateUrl: 'views/people.html',
             controller: 'PeopleCtrl',
-            controllerAs: 'people'
+            controllerAs: 'people',
+            data : {
+                showSideNav : true
+            }
           })
           .state('movieView', {
             url : '/movieView/:id/',
@@ -32,7 +50,8 @@
             controller: 'MovieviewCtrl',
             controllerAs: 'movieView',
             data : {
-                showHeaderSlideshow : false
+                showHeaderSlideshow : true,
+                showSideNav : false
             }
           })
           .state('showView', {
@@ -41,7 +60,8 @@
             controller: 'ShowviewCtrl',
             controllerAs: 'showView',
             data : {
-                showHeaderSlideshow : false
+                showHeaderSlideshow : true,
+                showSideNav : false
             }
           })
           .state('personView', {
@@ -50,7 +70,8 @@
             controller: 'PersonviewCtrl',
             controllerAs: 'personView',
             data : {
-                showHeaderSlideshow : false
+                showHeaderSlideshow : true,
+                showSideNav : false
             }
           })
       });
