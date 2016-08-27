@@ -42,5 +42,7 @@ angular.module('dvdRentalFrontendApp')
         function loadMovieView(id){
             $state.go('movieView', {id : id});
         }
+
+
     });
 })()

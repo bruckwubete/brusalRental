@@ -29,7 +29,7 @@ angular.module('dvdRentalFrontendApp')
 
  function  suc (result){
        vm.movie = result.data;
-   };
+};
 
  function err (results) {
    }

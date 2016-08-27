@@ -24,12 +24,17 @@
     <!-- Add your site or application content here -->
     <div ng-controller="applicaitonController as appCtrl" id="container" ng-cloak>
 
-      <div >
-        <div carousel3d ng-model = "appCtrl.slides" options="appCtrl.options">
-        <div carousel3d-slide ng-repeat="slide in appCtrl.slides">
-          <img id="slide" ng-if="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
-        </div>
-        </div>
+      <div class="demo-layout-transparent" layout = "column">
+        <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
+        layout-fill
+        on-selected-click="appCtrl.selectedClick(index)"
+            on-slide-change="appCtrl.slideChanged(index)"
+            on-last-slide="appCtrl.lastSlide(index)"
+            on-before-change="appCtrl.beforeChange(index)">
+        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by $index" ng-if = "$index > 0">
+            <img id="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
+        </carousel3d-slide>
+        </carousel3d>
             <div class="mdl-card__menu">
               <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                 <i class="material-icons">share</i>

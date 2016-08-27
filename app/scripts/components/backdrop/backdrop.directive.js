@@ -21,7 +21,6 @@
     };
     /* jshint unused:false */
     function link(scope, element, attrs) {
-      console.log('here');
       var img = angular.element(element[0].querySelector('img'));
 
       img.on('load', function(){

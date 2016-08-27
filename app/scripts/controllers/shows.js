@@ -10,11 +10,6 @@
 angular.module('dvdRentalFrontendApp')
   .controller('ShowsCtrl', function (lubTmdbApi,$state) {
     var vm = this
-    vm.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
     vm.popularTvShows = [];
     vm.loadShowView = loadShowView;
     vm.exec = exec;
