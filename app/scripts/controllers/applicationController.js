@@ -12,18 +12,18 @@
         vm.slides = [];
          vm.options = {
             visible: 5,
-            perspective: 35,
+            perspective: 1,
             startSlide: 0,
             border: 3,
-            dir: 'ltr',
-            width: 360,
-            height: 270,
-            space: 220,
-            autoRotationSpeed: 2500,
-            loop: true,
+            width: 500,
+            height: 500,
+            space: 500,
+            autoRotationSpeed: 6000,
+            clicking: true,
+            loop : false,
 
         }
-        
+
         function exec (type, method, query) {
          lubTmdbApi[type][method]({
              query: query

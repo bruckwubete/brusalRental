@@ -23,12 +23,13 @@
 
     <!-- Add your site or application content here -->
     <div ng-controller="applicaitonController as appCtrl" id="container" ng-cloak>
-      <div carousel3d ng-model = "appCtrl.slides" options="appCtrl.options">
-      <div carousel3d-slide ng-repeat="slide in appCtrl.slides">
-        <!--<div class="demo-card-wide mdl-card mdl-shadow--2dp" >
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Just Kick It</h2>
-            </div>
+
+      <div >
+        <div carousel3d ng-model = "appCtrl.slides" options="appCtrl.options">
+        <div carousel3d-slide ng-repeat="slide in appCtrl.slides">
+          <img id="slide" ng-if="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
+        </div>
+        </div>
             <div class="mdl-card__menu">
               <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                 <i class="material-icons">share</i>
@@ -43,12 +44,9 @@
                 <i class="material-icons">group</i>
               </button>
             </div>
-            </div> -->
-            <figure>
-              <img ng-src="http://image.tmdb.org/t/p/w500{{slide.poster_path}}"/>
-            </figure>
-        </div>
-        </div>
+            </div>
+
+
    <div layout="row" flex="100"  id="container">
     <md-sidenav
         class="md-sidenav-left"

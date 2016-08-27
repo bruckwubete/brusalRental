@@ -11,6 +11,10 @@
 body {
   padding: 0;
 }
+#slide{
+  height: 100%;
+  width: 100%
+}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -89,7 +93,7 @@ body {
 }
 
 .demo-layout-transparent {
-  background: url('../images/city.jpg') center / cover;
+  background: url('../images/citddy.jpg') center / cover;
 }
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
@@ -100,20 +104,23 @@ body {
 
 .demo-card-wide.mdl-card {
   width: 100%;
+
 }
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 500px;
   width: 500px;
-  background: url('../images/city.jpg') center / cover;
-}
-.demo-card-wide > .mdl-card__title {
   transition: all 2s ease-in-out;
+  background: url('../images/city.jpg') center / cover;
+  -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+}
+.demo-card-wide > .mdl-card__title:hover{
+
     -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
     -moz-transition: all 2s ease-in-out; /** Firefox **/
     -o-transition: all 2s ease-in-out; /** Opera **/
-  transform: translate(350px,0);
-   -webkit-transform: translate(350px,0); /** Safari & Chrome **/
+
+   -webkit-transform: translateX(300px); /** Safari & Chrome **/
    -o-transform: translate(350px,0); /** Opera **/
    -moz-transform: translate(350px,0); /** Firefox **/
 }
