@@ -1,14 +1,15 @@
-<mdb-backdrop flex="100" layout-fill path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path"></mdb-backdrop>
-<div class="container" mdb-loading loading="movieView.loading" id="movie-container">
-  <div class="row">
-    <div class="col-sm-12">
+<mdb-backdrop path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path"></mdb-backdrop>
+<div flex="100" layout="row" layout-align="center">
+<div layout="column" flex="55" layout-align="none center">
+
+    <div class="col-sm-12" layout="row">
       <h1 class="page-header">{{movieView.movie.title}}
         <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
         <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
       </h1>
     </div>
-  </div>
+
 
 <!--   <div class="row">
     <div class="col-sm-12">
@@ -20,15 +21,14 @@
     </div>
   </div> -->
 
-  <div class="row">
+  <div layout="row" layout-align="space-between">
     <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
-        <img ng-if="movieView.movie.poster_path" class="media-object" width="300" ng-src="http://image.tmdb.org/t/p/w1920{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
+        <img ng-if="movieView.movie.poster_path" class="media-object" width="260" ng-src="http://image.tmdb.org/t/p/w1920{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{movieView.movie.title}}" alt="{{movieView.movie.title}}" ng-if="!movieView.movie.poster_path && movieView.movie.title">
       </div>
     </div>
-
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
       <div class="row">
         <div class="col-sm-12">
@@ -40,7 +40,7 @@
       </div>
 
       <!-- torrents -->
-      <div class="row">
+      <div class="row" >
         <div class="col-sm-12">
           <p ng-show="movieView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
 
@@ -56,7 +56,7 @@
       </div>
       <!-- end -->
 
-      <div class="row" ng-if="movieView.torrentUrl">
+      <div layout="row" ng-if="movieView.torrentUrl">
         <div class="col-sm-12">
           <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{movieView.movie.backdrop_path}}" style="width:100%">
             <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
@@ -70,7 +70,7 @@
         </div>
       </div> -->
 
-      <div class="row">
+      <div layout="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="movieView.movie.tagline" class="text-upper text-bold text-xl">{{movieView.movie.tagline}}</p>
           <p ng-show="movieView.movie.overview" style="font-size: 1.1em;">{{movieView.movie.overview}}</p>
@@ -88,10 +88,10 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div layout="row">
         <div class="col-sm-12">
           <hr>
-          <div class="row">
+          <div layout="row">
             <div class="col-xs-6 col-sm-3 col-md-4">
               <p class="text-upper">Directed by</p>
               <p ng-repeat="director in movieView.movie.directors">
@@ -121,12 +121,10 @@
     </div>
 
   </div>
-  <div class="row">
-    <div class="col-sm-12">
+  <div class="col-sm-12" layout="row" layout-align="start">
       <h2 class="page-header">Cast</h2>
-    </div>
   </div>
-  <div class="row">
+  <div layout="row">
     <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in movieView.movie.credits.cast">
       <div class="media">
         <div class="pull-left">
@@ -145,4 +143,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
