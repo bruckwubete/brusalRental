@@ -1,6 +1,8 @@
 // bower:scss
 // endbower
-
+p, em, h1, h2, h3, h4 {
+  color : white;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -106,42 +108,16 @@ body {
   width: 100%;
 
 }
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 500px;
-  width: 500px;
-  transition: all 2s ease-in-out;
-  background: url('../images/city.jpg') center / cover;
-  -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
-}
-.demo-card-wide > .mdl-card__title:hover{
 
-    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
-    -moz-transition: all 2s ease-in-out; /** Firefox **/
-    -o-transition: all 2s ease-in-out; /** Opera **/
 
-   -webkit-transform: translateX(300px); /** Safari & Chrome **/
-   -o-transform: translate(350px,0); /** Opera **/
-   -moz-transform: translate(350px,0); /** Firefox **/
-}
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
-}
-
-md-tab-content {
-  overflow: auto;
-}
 #container{
   height: 100%;
 }
-md-tabs{
-  height: 100%;
-}
+
 
 .backdrop-container {
   width: 100%;
   position: absolute;
-  z-index: -1;
 }
 
 .backdrop-container .backdrop-image {
