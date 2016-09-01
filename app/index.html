@@ -50,25 +50,31 @@
               </button>
             </div>
         </div>
+    <md-content flex="35">
     <div>
         <md-tabs md-stretch-tabs="always" md-auto-select>
-          <md-tab tab-click-listener="discover" md-no-tab-content>
+          <md-tab tab-click-listener="discover">
             <md-tab-label>Discover<md-tab-label>
+               <md-content flex="100" ui-view></md-content>
           </md-tab>
-          <md-tab  tab-click-listener="movies" md-no-tab-content>
+          <md-tab  tab-click-listener="movies">
             <md-tab-label>Movies<md-tab-label>
+               <md-content flex="100" ui-view></md-content>
           </md-tab>
-          <md-tab tab-click-listener="shows" md-no-tab-content>
+          <md-tab tab-click-listener="shows">
             <md-tab-label>Shows<md-tab-label>
+               <md-content flex="100" ui-view></md-content>
           </md-tab>
-          <md-tab tab-click-listener="people" md-no-tab-content>
-            <md-tab-label>People<md-tab-label>
+          <md-tab tab-click-listener="people" label="people">
+            
+             <md-content flex="100" ui-view></md-content>
+
           </md-tab>
         </md-tabs>
     </div>
 
-  <div id="container" flex="100" ui-view></div>
-
+  
+  </md-content>
   </div>
 
 
