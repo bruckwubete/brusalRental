@@ -11,7 +11,10 @@ angular.module('dvdRentalFrontendApp')
   .controller('MovieviewCtrl', function ($state, lubTmdbApi) {
     var vm = this;
     vm.getMovie = getMovie;
-    vm.movie = {};
+    vm.queryResult = [];
+    vm.movie= {};
+    vm.cast = {};
+    vm.crew = {};
     activate();
     function activate(){
       getMovie();
@@ -19,6 +22,7 @@ angular.module('dvdRentalFrontendApp')
 
     function getMovie(){
         exec('movie','movie',$state.params.id)
+        exec('movie','casts',$state.params.id);
     }
 
     function exec (type, method, query) {
@@ -28,8 +32,14 @@ angular.module('dvdRentalFrontendApp')
     }
 
  function  suc (result){
-       vm.movie = result.data;
+       vm.queryResult.push(result.data);
+       vm.movie = vm.queryResult[0];
+       if(vm.queryResult[1]){
+         vm.cast = vm.queryResult[1].cast;
+         vm.crew = vm.queryResult[1].crew;
+       }
 };
+
 
  function err (results) {
    }
