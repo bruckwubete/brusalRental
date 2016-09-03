@@ -1,16 +1,15 @@
-<mdb-backdrop path="showView.show.backdrop_path" ng-if="showView.show.backdrop_path"></mdb-backdrop>
-
-
-<div class="container" mdb-loading loading="showView.loading" id="movie-container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1 class="page-header">{{showView.movie.title}}
-        <em class="small" ng-show="showView.movie.release_date">({{showView.movie.release_date | date:'yyyy'}})</em>
-        <em class="small" ng-show="!showView.movie.release_date && showView.movie.status">({{showView.movie.status}})</em>
+<div flex="100">
+<mdb-backdrop path="showView.show.backdrop_path" ng-if="showView.show.backdrop_path" layout-fill flex="100"></mdb-backdrop>
+<div flex="100" layout="row" layout-align="center">
+<div layout="column" flex="55" flex-xs="100" layout-align="none center" layout-fill>
+    <div class="col-sm-12" layout="row">
+      <h1 class="page-header">{{showView.show.name}}
+        <em class="small" ng-show="showView.show.release_date">({{showView.show.release_date | date:'yyyy'}})</em>
+        <em class="small" ng-show="!showView.show.release_date && showView.movie.status">({{showView.show.status}})</em>
         <span ng-show="showView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
       </h1>
     </div>
-  </div>
+
 
 <!--   <div class="row">
     <div class="col-sm-12">
@@ -22,10 +21,10 @@
     </div>
   </div> -->
 
-  <div class="row">
+  <div layout="row" layout-align="space-between">
     <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
-        <img ng-if="showView.show.poster_path" class="media-object" width="300" ng-src="{{showView.API_SETTINGS.baseImageUrl}}w300/{{showView.show.poster_path}}" alt="{{showView.show.title}}">
+        <img ng-if="showView.show.poster_path" class="media-object" width="260" ng-src="http://image.tmdb.org/t/p/w1920{{showView.show.poster_path}}" alt="{{showView.show.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{showView.show.title}}" alt="{{showView.show.title}}" ng-if="!showView.show.poster_path && showView.show.title">
       </div>
@@ -72,7 +71,7 @@
         </div>
       </div> -->
 
-      <div class="row">
+      <div layout="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="showView.show.tagline" class="text-upper text-bold text-xl">{{showView.show.tagline}}</p>
           <p ng-show="showView.show.overview" style="font-size: 1.1em;">{{showView.show.overview}}</p>
@@ -123,28 +122,30 @@
     </div>
 
   </div>
-  <div class="row">
+
     <div class="col-sm-12">
       <h2 class="page-header">Cast</h2>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in showView.show.credits.cast">
-      <div class="media">
-        <div class="pull-left">
-          <a ng-href="person/{{actor.id}}">
-            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
-            <img ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="{{showView.API_SETTINGS.baseImageUrl}}w92/{{actor.profile_path}}" alt="{{actor.name}}">
-            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
-          </a>
-        </div>
-        <div class="media-body">
-          <a ng-href="person/{{actor.id}}">
-            <p class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
-          </a>
-          <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
+
+    <div class="row">
+      <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in showView.cast | limitTo : 8">
+        <div class="media">
+          <div class="pull-left">
+            <a ng-href="person/{{actor.id}}">
+              <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+              <img ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w1920/{{actor.profile_path}}" alt="{{actor.name}}">
+              <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
+            </a>
+          </div>
+          <div class="media-body">
+            <a ng-href="person/{{actor.id}}">
+              <p class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
+            </a>
+            <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
+
+    </div>
