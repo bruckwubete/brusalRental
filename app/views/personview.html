@@ -1,8 +1,10 @@
+
+<div style="background-color: black;" flex="100">
 <mdb-backdrop path="personView.person.backdrop_path" ng-if="personView.person.backdrop_path"></mdb-backdrop>
 
 
-<div class="container" mdb-loading loading="movieView.loading" id="movie-container">
-  <div class="row">
+<div flex="100" layout="row" layout-align="center">
+<div layout="column" flex="66" flex-xs="100" layout-align="center" layout-fill>
     <div class="col-sm-12">
       <h1 class="page-header">{{personView.person.name}}
         <em class="small" ng-show="personView.person.release_date">({{personView.person.release_date | date:'yyyy'}})</em>
@@ -10,7 +12,7 @@
         <span ng-show="personView.person.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
       </h1>
     </div>
-  </div>
+
 
 <!--   <div class="row">
     <div class="col-sm-12">
@@ -22,7 +24,7 @@
     </div>
   </div> -->
 
-  <div class="row">
+  <div layout="row">
     <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
         <img ng-if="personView.person.profile_path" class="media-object" width="300" ng-src="https://image.tmdb.org/t/p/w300/{{personView.person.profile_path}}" alt="{{personView.person.title}}">
@@ -42,7 +44,7 @@
       </div>
 
       <!-- torrents -->
-      <div class="row">
+      <div layout="row">
         <div class="col-sm-12">
           <p ng-show="movieView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
 
@@ -58,7 +60,7 @@
       </div>
       <!-- end -->
 
-      <div class="row" ng-if="movieView.torrentUrl">
+      <div layout="row" ng-if="movieView.torrentUrl">
         <div class="col-sm-12">
           <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{personView.person.backdrop_path}}" style="width:100%">
             <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
@@ -72,7 +74,7 @@
         </div>
       </div> -->
 
-      <div class="row">
+      <div layout="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="personView.person.tagline" class="text-upper text-bold text-xl">{{personView.person.tagline}}</p>
           <p ng-show="personView.person.biography" style="font-size: 1.1em;">{{personView.person.biography}}</p>
@@ -90,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div layout="row">
         <div class="col-sm-12">
           <hr>
           <div class="row">
@@ -123,12 +125,12 @@
     </div>
 
   </div>
-  <div class="row">
+  <div layout="row">
     <div class="col-sm-12">
-      <h2 class="page-header">Cast</h2>
+      <h2 class="page-header">Starring In</h2>
     </div>
   </div>
-  <div class="row">
+  <div layout="row">
     <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in personView.person.credits.cast">
       <div class="media">
         <div class="pull-left">
@@ -147,4 +149,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
