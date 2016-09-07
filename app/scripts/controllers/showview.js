@@ -12,6 +12,7 @@ angular.module('dvdRentalFrontendApp')
     var vm = this;
     vm.getShow = getShow;
     vm.queryResult = [];
+    vm.loadPersonView = loadPersonView;
     activate();
     function activate(){
       getShow();
@@ -39,5 +40,9 @@ angular.module('dvdRentalFrontendApp')
 
  function err (results) {
    console.log(results);
+   }
+
+   function loadPersonView(id){
+       $state.go('personView',{id : id})
    }
   });
