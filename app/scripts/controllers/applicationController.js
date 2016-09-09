@@ -10,17 +10,19 @@
         vm.showSideNav = showSideNav;
         vm.loadView = loadView;
         vm.slides = [];
-         vm.options = {
+        vm.options = {
+            sourceProp: '',
             visible: 9,
             perspective: 1,
             startSlide: 0,
             border: 3,
             width: 500,
+            dir:'ltr',
             height: 500,
             space: 500,
             clicking: true,
             loop : true,
-            autoRotationSpeed: 9000
+            autoRotationSpeed: 18000
         }
 
        vm.selectedClick = selectedClick;

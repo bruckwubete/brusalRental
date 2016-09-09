@@ -26,12 +26,12 @@
 
       <div class="demo-layout-transparent" layout="column">
         <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
-        layout-fill
-        on-selected-click="appCtrl.selectedClick(index)"
+            layout-fill
+            on-selected-click="appCtrl.selectedClick(index)"
             on-slide-change="appCtrl.slideChanged(index)"
             on-last-slide="appCtrl.lastSlide(index)"
             on-before-change="appCtrl.beforeChange(index)">
-        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by $index" ng-if = "$index > 0">
+        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0">
             <img id="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
         </carousel3d-slide>
         </carousel3d>
@@ -65,7 +65,7 @@
         </md-tabs>
     </div>
 
-    <div flex="100" ui-view autoscroll="true"></divs>
+    <div flex="100" ui-view></divs>
 
   </div>
 
