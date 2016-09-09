@@ -24,8 +24,7 @@
     <!-- Add your site or application content here -->
     <div ng-controller="applicaitonController as appCtrl" ng-cloak>
 
-       <!--<div class="demo-layout-transparent" layout="column">
-       
+      <div class="demo-layout-transparent" layout="column">
         <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
         layout-fill
         on-selected-click="appCtrl.selectedClick(index)"
@@ -36,7 +35,6 @@
             <img id="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
         </carousel3d-slide>
         </carousel3d>
-        
             <div class="mdl-card__menu">
               <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                 <i class="material-icons">share</i>
@@ -51,13 +49,7 @@
                 <i class="material-icons">group</i>
               </button>
             </div>
-        </div>-->
-        
-        <div carousel>
-          <div ng-repeat="slide in appCtrl.slides | limitTo : 5">
-    <a class="carousel-item" href="javascript:void(0);" layout="row"><img src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"></a>
-         </div>
-      </div>
+        </div>
 
     <div>
         <md-tabs md-stretch-tabs="always" md-auto-select>
