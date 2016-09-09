@@ -1,14 +1,8 @@
-<div>
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
-        md-row-height-gt-md="1:1" md-row-height="2:2"
-        md-gutter="12px" md-gutter-gt-sm="8px">
-      <md-grid-tile  md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                     ng-repeat = " person in people.peoples |limitTo:20">
-    <md-card>
-           <img ng-click="people.loadPersonView(person.id)" ng-src="http://image.tmdb.org/t/p/w500{{person.profile_path}}"
-                class="md-media-lg card-media"
-                alt="movie poster image">
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+<div class="row">
+
+  <div class="col s12 m4 l3" ng-repeat = "person in people.peoples | limitTo : 20">
+
+           <img ng-click="people.loadPersonView(person.id)" ng-src="http://image.tmdb.org/t/p/w1920{{person.profile_path}}" class="responsive-img hoverable"/>
+
+  </div>
 </div>

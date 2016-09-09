@@ -15,7 +15,9 @@
     "angular-material": "^1.0.9",
     "material-design-lite": "^1.2.0",
     "angular-ui-router": "^0.3.1",
-    "angular-carousel-3d": "*"
+    "angular-carousel-3d": "*",
+    "materialize": "^0.97.7",
+    "angular-materialize": "^0.2.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

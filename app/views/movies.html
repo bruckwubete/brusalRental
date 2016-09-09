@@ -1,16 +1,13 @@
-<div ng-show="!movies.formBusy">
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
-        md-row-height-gt-md="1:1" md-row-height="1:1"
-        md-gutter="12px" md-gutter-gt-sm="8px">
-  <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                 ng-repeat = " movie in movies.popularMovies | limitTo : 20" class="slide-right">
-    <md-card>
+<div ng-show="!movies.formBusy" class="row">
+
+  <div class="col s12 m6 l3" ng-repeat = " movie in movies.popularMovies | limitTo : 20">
+
            <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"
-                class="md-media-lg card-media"
-                alt="movie poster image">
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+                alt="movie poster image" class="responsive-img hoverable z-depth-4">
+                <span>&nbsp;</span>
+
+
+  </div>
 </div>
 <div ng-show ="movies.formBusy" class="mdl-spinner mdl-js-spinner is-active"></div>
 <!--  <md-sidenav
