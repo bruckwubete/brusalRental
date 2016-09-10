@@ -1,6 +1,6 @@
 <div ng-show="!movies.formBusy" class="row">
 
-  <div class="col s12 m6 l3" ng-repeat = " movie in movies.popularMovies | limitTo : 20">
+  <div class="col s6 m4 l3" ng-repeat = " movie in movies.popularMovies">
 
            <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"
                 alt="movie poster image" class="responsive-img hoverable z-depth-4">

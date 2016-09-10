@@ -1,10 +1,9 @@
 <div class="row">
 
-  <div class="col s12 m4 l3" ng-repeat = "show in shows.popularTvShows | limitTo : 20">
+  <div class="col s6 m4 l3" ng-repeat = "show in shows.popularTvShows">
 
-           <img ng-click="shows.loadShowView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}" class="responsive-img hoverable"/>
+           <img ng-click="shows.loadShowView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}" class="responsive-img hoverable z-depth-4"/>
             <span>&nbsp;</span>
 
   </div>
 </div>
-

@@ -17,7 +17,6 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'ngResource',
     'ngMaterial',
     'ui.router',

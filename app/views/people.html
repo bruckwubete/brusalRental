@@ -1,8 +1,8 @@
 <div class="row">
 
-  <div class="col s12 m4 l3" ng-repeat = "person in people.peoples | limitTo : 20">
+  <div class="col s6 m4 l3" ng-repeat = "person in people.peoples track by $index">
 
-           <img ng-click="people.loadPersonView(person.id)" ng-src="http://image.tmdb.org/t/p/w1920{{person.profile_path}}" class="responsive-img hoverable"/>
-
+           <img ng-click="people.loadPersonView(person.id)" ng-src="http://image.tmdb.org/t/p/w500{{person.profile_path}}" class="responsive-img hoverable z-depth-4 left-align"/>
+ <span>&nbsp;</span>
   </div>
 </div>
