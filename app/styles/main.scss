@@ -71,31 +71,39 @@ body {
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+/* As the screen size gets smaller increase backdrop size and center */
+@media (min-width:960px) {
+  .backdrop-container .backdrop-image {
+    width: 180%;
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+    height: 100%;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+}
+
+@media (max-width:960px) {
+  .backdrop-container .backdrop-image {
+    width: 220%;
+    margin-left: -60%;
+      height: 100%;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+}
+
+@media (max-width:480px) {
+  .backdrop-container .backdrop-image {
+    width: 300%;
+    margin-left: -100%;
+      height: 100%;
   }
 }
 
 .demo-layout-transparent {
   background: url('../images/backgroundPic.jpg') center / cover;
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
 }
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
@@ -119,10 +127,24 @@ body {
 .backdrop-container {
   width: 100%;
   position: absolute;
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+
 }
 
 .backdrop-container .backdrop-image {
   width: 100%;
+  background-repeat:no-repeat;
+  -webkit-background-size:cover !important;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+
 }
 
 .backdrop-container::before {
