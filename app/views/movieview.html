@@ -1,9 +1,9 @@
-<div flex="100">
+<div id="black-background">
 <mdb-backdrop path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path" layout-fill flex="100"></mdb-backdrop>
-<div flex="100" layout="row" layout-align="center">
-<div layout="column" flex="55" flex-xs="100" layout-align="none center" layout-fill>
-
-    <div class="col-sm-12" layout="row">
+<div   layout="row" flex-offset-xl="10" flex-offset-lg="15">
+<div class="row" >
+  <div class="col-sm-12 col-md-12 col-lg-11">
+    <div class="col-sm-12" class="row">
       <h1 class="page-header">{{movieView.movie.title}}
         <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
@@ -22,10 +22,10 @@
     </div>
   </div> -->
 
-  <div layout="row" layout-align="space-between">
+  <div class="row">
     <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
-        <img ng-if="movieView.movie.poster_path" class="media-object" width="260" ng-src="http://image.tmdb.org/t/p/w1920{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
+        <img ng-if="movieView.movie.poster_path" class="media-object" width="300" ng-src="http://image.tmdb.org/t/p/w1920{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{movieView.movie.title}}" alt="{{movieView.movie.title}}" ng-if="!movieView.movie.poster_path && movieView.movie.title">
       </div>
@@ -57,7 +57,7 @@
       </div>
       <!-- end -->
 
-      <div layout="row" ng-if="movieView.torrentUrl">
+      <div class="row" ng-if="movieView.torrentUrl">
         <div class="col-sm-12">
           <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{movieView.movie.backdrop_path}}" style="width:100%">
             <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
@@ -71,7 +71,7 @@
         </div>
       </div> -->
 
-      <div layout="row">
+      <div class="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="movieView.movie.tagline" class="text-upper text-bold text-xl">{{movieView.movie.tagline}}</p>
           <p ng-show="movieView.movie.overview" style="font-size: 1.1em;">{{movieView.movie.overview}}</p>
@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-      <div layout="row">
+      <div class="row">
         <div>
           <hr>
           <div layout="row">
@@ -144,7 +144,8 @@
       </div>
     </div>
   </div>
-  </div>
-
+</div>
+</div>
+</div>
 </div>
 </div>
