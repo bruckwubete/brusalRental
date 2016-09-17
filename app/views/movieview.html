@@ -1,4 +1,4 @@
-<div id="black-background">
+<div id="black-background" flex="100">
 <mdb-backdrop path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path" layout-fill flex="100"></mdb-backdrop>
 <div   layout="row" flex-offset-xl="10" flex-offset-lg="15">
 <div class="row" >
@@ -7,7 +7,7 @@
       <h1 class="page-header">{{movieView.movie.title}}
         <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
-        <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
+        <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
       </h1>
     </div>
 
@@ -42,6 +42,11 @@
 
       <!-- torrents -->
       <div class="row" >
+        <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
+          <p class="text-upper small" style="margin:0;">From {{movieView.movie.vote_count}} votes</p>
+          <jk-rating-stars max-rating="10" rating="movieView.movie.vote_average" read-only="true" on-rating="ctrl.onRating(rating)" >
+          </jk-rating-stars>
+        </div>
         <div class="col-sm-12">
           <p ng-show="movieView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
 
@@ -76,17 +81,6 @@
           <p ng-show="movieView.movie.tagline" class="text-upper text-bold text-xl">{{movieView.movie.tagline}}</p>
           <p ng-show="movieView.movie.overview" style="font-size: 1.1em;">{{movieView.movie.overview}}</p>
           <em ng-hide="movieView.movie.overview">No movie synopsis available</em>
-        </div>
-        <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
-          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
-            <p class="text-bold" style="font-size: 6.3em; margin:0;">{{movieView.movie.vote_average | number:1}}</p>
-            <p class="text-upper small" style="margin:0;">From {{movieView.movie.vote_count}} votes</p>
-          </div>
-
-          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
-            <uib-rating ng-show="app.user.id" ng-model="movieView.movie.account_states.rated.value" max="10" ng-change="movieView.ratingChanged()"></uib-rating>
-            <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
-          </div>
         </div>
       </div>
       <div class="row">
