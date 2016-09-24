@@ -21,7 +21,7 @@ angular.module('dvdRentalFrontendApp')
  }
 
 function  suc (result){
-    for(var i=0; i<=result.data.results.length;i++){
+    for(var i=0; i<result.data.results.length;i++){
         vm.popularItems.push(result.data.results[i]);
     }
 };
@@ -32,6 +32,8 @@ function err (results) {
     function activate(){
 
             exec('movie','popular','');
+            exec('tv','popular','');
+            console.log(vm.popularItems);
 
     }
     activate();

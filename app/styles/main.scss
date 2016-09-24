@@ -1,6 +1,8 @@
 // bower:scss
 // endbower
-
+p, em, h1, h2, h3, h4 {
+  color : white;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -106,43 +108,20 @@ body {
   width: 100%;
 
 }
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 500px;
-  width: 500px;
-  transition: all 2s ease-in-out;
-  background: url('../images/city.jpg') center / cover;
-  -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
-}
-.demo-card-wide > .mdl-card__title:hover{
 
-    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
-    -moz-transition: all 2s ease-in-out; /** Firefox **/
-    -o-transition: all 2s ease-in-out; /** Opera **/
 
-   -webkit-transform: translateX(300px); /** Safari & Chrome **/
-   -o-transform: translate(350px,0); /** Opera **/
-   -moz-transform: translate(350px,0); /** Firefox **/
-}
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
-}
-
-md-tab-content {
-  overflow: auto;
-}
 #container{
   height: 100%;
 }
-md-tabs{
-  height: 100%;
+
+#black-background{
+  background-color: black
 }
+
 
 .backdrop-container {
   width: 100%;
-  overflow: hidden;
   position: absolute;
-  z-index: -1;
 }
 
 .backdrop-container .backdrop-image {
@@ -158,4 +137,8 @@ md-tabs{
   background-image:    -moz-linear-gradient(top, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
   background-image:      -o-linear-gradient(top, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
   background-image:         linear-gradient(to bottom, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
+}
+
+.movie-poster img {
+  width: 100%;
 }

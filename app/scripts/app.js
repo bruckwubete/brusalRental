@@ -17,10 +17,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'ngResource',
     'ngMaterial',
     'ui.router',
+    'jkAngularRatingStars',
     'angular-carousel-3d',
     'lub-tmdb-api']).value('lubTmdbApiKey','02995914fdeb3ab56aa5d4c1ea6e94aa')
   .config(['$httpProvider', function($httpProvider) {

@@ -8,13 +8,8 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('PeopleCtrl', function (lubTmdbApi, PeopleService, $state) {
+  .controller('PeopleCtrl', function (lubTmdbApi, $state) {
     var vm = this;
-    vm.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
     vm.peoples = [];
     vm.exec = exec;
     vm.loadPersonView = loadPersonView;
@@ -26,9 +21,10 @@ angular.module('dvdRentalFrontendApp')
  }
 
 function  suc (result){
-    for(var i=0; i<=result.data.results.length;i++){
+    for(var i=0; i<result.data.results.length;i++){
         vm.peoples.push(result.data.results[i]);
     }
+    console.log(vm.peoples);
 };
 
 function err (results) {
@@ -37,6 +33,7 @@ function err (results) {
     function activate(){
 
             exec('people','popular','');
+
 
     }
     activate();
