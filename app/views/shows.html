@@ -1,4 +1,4 @@
-<div class="row">
+<!--<div class="row">
 
   <div class="col s6 m4 l3" ng-repeat = "show in shows.popularTvShows">
 
@@ -6,4 +6,31 @@
             <span>&nbsp;</span>
 
   </div>
+</div> -->
+
+<div ng-cloak>
+  <md-content layout-padding>
+    <md-grid-list
+        md-cols-gt-md="12" md-cols="3" md-cols-md="8"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+      <md-grid-tile
+          ng-repeat = "show in shows.popularTvShows"
+          md-colspan-xl="3"
+          md-rowspan-xl="4"
+          md-colspan-lg="3"
+          md-rowspan-lg="4"
+          md-colspan-md="2"
+          md-rowspan-md="3"
+          md-colspan-sm="1"
+          md-rowspan-sm="2"
+          md-colspan-xs="1"
+          md-rowspan-xs="2">
+          <img ng-click="shows.loadShowView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}"
+              layout-fill/>
+           <span>&nbsp;</span>
+               <span>&nbsp;</span>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
 </div>

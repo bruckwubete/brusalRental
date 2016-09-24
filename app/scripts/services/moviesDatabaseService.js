@@ -9,15 +9,16 @@
  */
 angular.module('dvdRentalFrontendApp')
     .factory('MovieService', function($resource,$http) {
-        return $resource('https://api.themoviedb.org/3/discover/movie/?api_key=02995914fdeb3ab56aa5d4c1ea6e94aa&page=:id', { id: '@_id' }, {
+        return $resource('/api/v1/movies/', { id: '@_id' }, {
           'get': {
+                   url: 'api/v1/movies/details/:id',
                    method: 'GET',
-                   headers: {
-                   'Content-Type': 'application/jsonp',
-                   'Access-Control-Allow-Headers':'*',
-                'Access-Control-Allow-Headers'  : 'Origin, X-Requested-With, Content-Type, Accept'
-                    }
-                }
+                },
+          queryAll: {
+                    url: 'api/v1/movies/popular',
+                    method: 'GET',
+                    isArray : true
+          }
         });
     })
     .factory('ShowService',function($resource){
