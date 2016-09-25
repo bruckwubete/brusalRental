@@ -1,7 +1,7 @@
 {
   "name": "dvd-rental-frontend",
   "version": "0.0.0",
-  "directory" : "./bower_components",
+  "directory": "./bower_components",
   "dependencies": {
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",
@@ -19,7 +19,8 @@
     "angular-carousel-3d": "*",
     "materialize": "^0.97.7",
     "angular-materialize": "^0.2.1",
-    "angular-jk-rating-stars": "^1.0.3"
+    "angular-jk-rating-stars": "^1.0.3",
+    "angular-lazy-img": "^1.2.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
@@ -34,7 +35,7 @@
         "dist/js/bootstrap.js"
       ]
     },
-    "angular-jk-rating-stars" : {
+    "angular-jk-rating-stars": {
       "main": [
         "dist/jk-rating-stars.js",
         "dist/jk-rating-stars.css"

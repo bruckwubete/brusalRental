@@ -25,7 +25,7 @@
   <div class="row">
     <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
-        <img ng-if="movieView.movie.poster_path" class="media-object" width="300" ng-src="http://image.tmdb.org/t/p/w1920{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
+        <img ng-if="movieView.movie.poster_path" class="media-object" width="300" lazy-img="http://image.tmdb.org/t/p/w300{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{movieView.movie.title}}" alt="{{movieView.movie.title}}" ng-if="!movieView.movie.poster_path && movieView.movie.title">
       </div>
@@ -62,13 +62,7 @@
       </div>
       <!-- end -->
 
-      <div class="row" ng-if="movieView.torrentUrl">
-        <div class="col-sm-12">
-          <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{movieView.movie.backdrop_path}}" style="width:100%">
-            <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
-          </video>
-        </div>
-      </div>
+
 
 <!--       <div class="row">
         <div class="col-sm-12">
@@ -125,7 +119,7 @@
         <div class="pull-left">
 
             <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
-            <img ng-click="movieView.loadPersonView(actor.id)" ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="https://image.tmdb.org/t/p/w1920/{{actor.profile_path}}" alt="{{actor.name}}">
+            <img ng-click="movieView.loadPersonView(actor.id)" ng-if="actor.profile_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w300/{{actor.profile_path}}" alt="{{actor.name}}">
             <img ng-click="movieView.loadPersonView(actor.id)" ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
 
         </div>
