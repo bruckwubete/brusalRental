@@ -8,6 +8,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css" />
+    <link rel="stylesheet" href="/bower_components/angular-carousel-3d/dist/carousel-3d.css" />
+    <link rel="stylesheet" href="/bower_components/materialize/bin/materialize.css" />
+    <link rel="stylesheet" href="/bower_components/angular-jk-rating-stars/dist/jk-rating-stars.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,17 +28,17 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-controller="applicaitonController as appCtrl" id="container" ng-cloak>
+    <div ng-controller="applicaitonController as appCtrl" ng-cloak layout-fill>
 
-      <div class="demo-layout-transparent" layout = "column">
+      <div class="demo-layout-transparent" layout="row" flex="100">
         <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
-        layout-fill
-        on-selected-click="appCtrl.selectedClick(index)"
+            on-selected-click="appCtrl.selectedClick(index)"
             on-slide-change="appCtrl.slideChanged(index)"
             on-last-slide="appCtrl.lastSlide(index)"
             on-before-change="appCtrl.beforeChange(index)">
-        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by $index" ng-if = "$index > 0">
-            <img id="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
+        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0"
+            >
+            <img id="slide" lazy-img="http://image.tmdb.org/t/p/w300{{slide.poster_path}}" flex-xs="85"/>
         </carousel3d-slide>
         </carousel3d>
             <div class="mdl-card__menu">
@@ -49,63 +55,26 @@
                 <i class="material-icons">group</i>
               </button>
             </div>
-            </div>
+        </div>
 
-
-   <div layout="row" flex="100"  id="container">
-    <md-sidenav
-        class="md-sidenav-left"
-        md-component-id="left"
-        md-is-locked-open="$mdMedia('gt-md')"
-        ng-show="appCtrl.showSideNav()"
-        md-disable-backdrop>
-
-        <span class="md-tabs md-tab md-tab-label md-stretch-tabs">Categories</span>
-      <md-content layout-padding id="container">
-        Here
-
-      </md-content>
-    </md-sidenav>
-
-    <div id="container" flex="100">
+    <div>
         <md-tabs md-stretch-tabs="always" md-auto-select>
-          <md-tab label="Discover" tab-click-listener="discover">
-            <div layout="column" layout-fill flex ="100" >
-            <md-tab-content>
-              <div ui-view></div>
-            </md-tab-content>
-            </div>
+          <md-tab  tab-click-listener="movies" md-no-tab-scontent>
+            <md-tab-label>Movies<md-tab-label>
           </md-tab>
-          <md-tab label="Movies" tab-click-listener="movies">
-            <div layout="column" layout-fill flex ="100">
-            <md-tab-content>
-              <div ui-view></div>
-            </md-tab-content>
-            </div>
+          <md-tab tab-click-listener="shows" md-no-tab-scontent>
+            <md-tab-label>Shows<md-tab-label>
           </md-tab>
-          <md-tab label="Shows" tab-click-listener="shows">
-            <div layout="column" layout-fill flex ="100" >
-            <md-tab-content>
-              <div ui-view></div>
-            </md-tab-content>
-          </div>
-          </md-tab>
-          <md-tab label="People" tab-click-listener="people">
-            <div layout="column" layout-fill flex ="100" >
-            <md-tab-content>
-              <div ui-view></div>
-            </md-tab-content>
-            </div>
+          <md-tab tab-click-listener="people" md-no-tab-scontent>
+             <md-tab-label>People<md-tab-label>
           </md-tab>
         </md-tabs>
     </div>
-  </div>
+
+    <div flex="100" ui-view></div>
 
   </div>
-    <div class="footer">
-      <div class="container">
-      </div>
-    </div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -120,6 +89,26 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/material-design-lite/material.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-swipe/dist/angular-swipe.js"></script>
+    <script src="/bower_components/angular-carousel-3d/dist/carousel-3d.js"></script>
+    <script src="/bower_components/materialize/bin/materialize.js"></script>
+    <script src="/bower_components/angular-materialize/src/angular-materialize.js"></script>
+    <script src="/bower_components/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
+    <script src="/bower_components/angular-lazy-img/release/angular-lazy-img.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

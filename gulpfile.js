@@ -164,7 +164,7 @@ gulp.task('bower', function () {
       directory: /*yeoman.app +*/ 'bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest(yeoman.temp));
+  .pipe(gulp.dest(yeoman.dist));
 });
 
 ///////////
@@ -175,9 +175,9 @@ gulp.task('clean:dist', function (cb) {
   rimraf(yeoman.dist, cb);
 });
 
-gulp.task('client:build', ['bower', 'html', 'styles'], function () {
-  var jsFilter = $.filter('**/*.js');
-  var cssFilter = $.filter('**/*.css');
+gulp.task('client:build', ['html', 'styles'], function () {
+  var jsFilter = $.filter('app/**/*.js');
+  var cssFilter = $.filter('app**/*.css');
 
   return gulp.src(paths.views.bowermain)
     .pipe($.useref({searchPath: [yeoman.app, yeoman.temp]}))
@@ -221,7 +221,7 @@ gulp.task('copy:favicon', function () {
     .pipe(gulp.dest(yeoman.dist));
 });
 
-gulp.task('build', ['clean:dist', 'bower'], function () {
+gulp.task('build', ['bower'], function () {
   runSequence(['images', 'copy:extras', 'copy:fonts', 'copy:favicon', 'client:build']);
 });
 

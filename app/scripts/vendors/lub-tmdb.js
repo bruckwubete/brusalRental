@@ -295,12 +295,12 @@ angular.module('lub-tmdb-api-search', ['lub-tmdb-config', 'lub-tmdb-http'])
 angular.module("lub-tmdb-api-tv", ['lub-tmdb-config', 'lub-tmdb-http'])
     .factory('lubTmdbApiTv', ["$q", "lubTmdbHTTP", function ($q, lubTmdbHTTP) {
     var noQuery = ['latest', 'airing_today', 'on_the_air', 'popular', 'top_rated'];
-    /*
-    var get = function (options, type) {
+
+  /*var get = function (options, type) {
         var opts = options || {};
         var action = type === '' ? '' : ('/' + type);
         return lubTmdbHTTP(angular.extend({}, opts, {
-            url:'tv' + action
+            url:'tv/' + action
         }));*/
         var get = function (options, type) {
             var opts = options || {};
@@ -358,6 +358,9 @@ angular.module("lub-tmdb-api-tv", ['lub-tmdb-config', 'lub-tmdb-http'])
         },
         topRated:function (options) {
             return get(options, 'top_rated');
+        },
+        credits:function (options) {
+            return get(options, 'credits');
         }
     };
 }]);

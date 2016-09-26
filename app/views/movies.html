@@ -1,15 +1,46 @@
-<div ng-show="!movies.formBusy">
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
-        md-row-height-gt-md="1:1" md-row-height="1:1"
-        md-gutter="12px" md-gutter-gt-sm="8px">
-  <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                 ng-repeat = " movie in movies.popularMovies | limitTo : 20" class="slide-right">
-    <md-card>
+<!--<div ng-show="!movies.formBusy" class="row">
+
+  <div class="col s6 m4 l3" ng-repeat = " movie in movies.popularMovies">
+
            <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w1920{{movie.poster_path}}"
-                class="md-media-lg card-media"
-                alt="movie poster image">
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+                alt="movie poster image" class="responsive-img hoverable z-depth-4">
+                <span>&nbsp;</span>
+
+
+  </div>
+</div>-->
+<div ng-cloak>
+  <md-content layout-padding>
+    <md-grid-list
+        md-cols-gt-md="12" md-cols="3" md-cols-md="8"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+      <md-grid-tile
+          ng-repeat = " movie in movies.popularMovies"
+          md-colspan-xl="3"
+          md-rowspan-xl="4"
+          md-colspan-lg="3"
+          md-rowspan-lg="4"
+          md-colspan-md="2"
+          md-rowspan-md="3"
+          md-colspan-sm="1"
+          md-rowspan-sm="2"
+          md-colspan-xs="1"
+          md-rowspan-xs="2">
+          <img ng-click="movies.loadMovieView(movie.id)" lazy-img="http://image.tmdb.org/t/p/w300{{movie.poster_path}}"
+               alt="movie poster image" layout-fill>
+               <span>&nbsp;</span>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
 </div>
 <div ng-show ="movies.formBusy" class="mdl-spinner mdl-js-spinner is-active"></div>
+<!--  <md-sidenav
+      class="md-sidenav-left"
+      md-component-id="left"
+      md-is-locked-open="$mdMedia('gt-md')"
+      ng-show="appCtrl.showSideNav()"
+      md-disable-backdrop>
+
+      <span class="md-tabs md-tab md-tab-label md-stretch-tabs">Categories</span>
+  </md-sidenav>-->

@@ -1,14 +1,36 @@
-<div>
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8"
-        md-row-height-gt-md="1:1" md-row-height="1:1"
-        md-gutter="12px" md-gutter-gt-sm="8px">
-  <md-grid-tile   md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
-                  ng-repeat = " show in shows.popularTvShows | limitTo:20">
-    <md-card>
-           <img ng-click="shows.loadShowView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}"
-                class="md-media-lg card-media"
-                alt="show poster image">
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+<!--<div class="row">
+
+  <div class="col s6 m4 l3" ng-repeat = "show in shows.popularTvShows">
+
+           <img ng-click="shows.loadShowView(show.id)" ng-src="http://image.tmdb.org/t/p/w1920{{show.poster_path}}" class="responsive-img hoverable z-depth-4"/>
+            <span>&nbsp;</span>
+
+  </div>
+</div> -->
+
+<div ng-cloak>
+  <md-content layout-padding>
+    <md-grid-list
+        md-cols-gt-md="12" md-cols="3" md-cols-md="8"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+      <md-grid-tile
+          ng-repeat = "show in shows.popularTvShows"
+          md-colspan-xl="3"
+          md-rowspan-xl="4"
+          md-colspan-lg="3"
+          md-rowspan-lg="4"
+          md-colspan-md="2"
+          md-rowspan-md="3"
+          md-colspan-sm="1"
+          md-rowspan-sm="2"
+          md-colspan-xs="1"
+          md-rowspan-xs="2">
+          <img ng-click="shows.loadShowView(show.id)" lazy-img="http://image.tmdb.org/t/p/w1920{{show.poster_path}}"
+              layout-fill/>
+           <span>&nbsp;</span>
+               <span>&nbsp;</span>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
 </div>
