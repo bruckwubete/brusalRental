@@ -38,9 +38,10 @@
             on-before-change="appCtrl.beforeChange(index)">
         <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0"
             >
-            <img id="slide" lazy-img="http://image.tmdb.org/t/p/w300{{slide.poster_path}}" flex-xs="85"/>
+            <img id="slide" ng-src="http://image.tmdb.org/t/p/w300{{slide.poster_path}}" layout-fill/>
         </carousel3d-slide>
         </carousel3d>
+
             <div class="mdl-card__menu">
               <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                 <i class="material-icons">share</i>

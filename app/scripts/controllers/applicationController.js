@@ -3,7 +3,7 @@
     angular.module('dvdRentalFrontendApp')
             .controller('applicaitonController',applicaitonController)
             ;
-    function applicaitonController($state,lubTmdbApi){
+    function applicaitonController($state,lubTmdbApi, $scope, $mdMedia){
 
         var vm = this;
         vm.showHeader = showHeader;
@@ -11,19 +11,19 @@
         vm.loadView = loadView;
         vm.slides = [];
         vm.options = {
-            sourceProp: '',
-            visible: 9,
-            perspective: 1,
-            startSlide: 0,
-            border: 3,
-            width: 500,
-            dir:'ltr',
-            height: 500,
-            space: 500,
-            clicking: true,
-            loop : true,
-            autoRotationSpeed: 18000
-        }
+      sourceProp: '',
+      visible: 9,
+      perspective: 1,
+      startSlide: 0,
+      border: 3,
+      width: 400,
+      dir:'ltr',
+      height: 400,
+      space: 400,
+      clicking: true,
+      loop : true,
+      autoRotationSpeed: 18000
+  };
 
        vm.selectedClick = selectedClick;
        vm.slideChanged = slideChanged;
@@ -80,18 +80,18 @@
         }
 
         function shuffle(array) {
-    let counter = array.length;
+    var counter = array.length;
 
     // While there are elements in the array
     while (counter > 0) {
         // Pick a random index
-        let index = Math.floor(Math.random() * counter);
+        var index = Math.floor(Math.random() * counter);
 
         // Decrease counter by 1
         counter--;
 
         // And swap the last element with it
-        let temp = array[counter];
+        var temp = array[counter];
         array[counter] = array[index];
         array[index] = temp;
     }
@@ -113,5 +113,17 @@ function selectedClick(index) {
 function slideChanged(index) {
    //console.log('Slide Changed callback triggered. \n == Slide index is: ' + index + ' ==');
 }
+
+$scope.$watch(function() { return $mdMedia('xs'); }, function() {
+  if($mdMedia('xs')){
+   vm.options.width = 200;
+   vm.options.height = 250;
+   vm.options.space = 200;
+ }else if($mdMedia('lg')){
+   vm.options.width = 400;
+   vm.options.height = 400;
+   vm.options.space = 400;
+ }
+ });
     }
 })();
