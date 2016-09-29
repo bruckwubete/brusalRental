@@ -8,6 +8,7 @@ var lazypipe = require('lazypipe');
 var rimraf = require('rimraf');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
+var concat = require('gulp-concat');
 
 //app directory structor
 var yeoman = {
@@ -155,6 +156,12 @@ gulp.task('test', ['start:server:test'], function () {
       configFile: paths.karma,
       action: 'watch'
     }));
+});
+
+gulp.task('scripts', function() {
+  return gulp.src(['app/scripts/**/*.js'])
+    .pipe(concat('app.bundle.js'))
+    .pipe(gulp.dest('./dist/'));
 });
 
 // inject bower components

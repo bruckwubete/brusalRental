@@ -14,7 +14,6 @@ angular.module('dvdRentalFrontendApp')
     activate();
     function activate(){
       vm.show = ShowService.get({id : $state.params.id});
-      console.log(vm.show);
     }
 
    function loadPersonView(id){

@@ -1,4 +1,4 @@
-(function(){
+
     'use strict';
     angular.module('dvdRentalFrontendApp')
             .controller('applicaitonController',applicaitonController)
@@ -21,8 +21,7 @@
             height: 500,
             space: 500,
             clicking: true,
-            loop : true,
-            autoRotationSpeed: 18000
+            loop : false
         }
 
        vm.selectedClick = selectedClick;
@@ -80,18 +79,18 @@
         }
 
         function shuffle(array) {
-    let counter = array.length;
+    var counter = array.length;
 
     // While there are elements in the array
     while (counter > 0) {
         // Pick a random index
-        let index = Math.floor(Math.random() * counter);
+        var index = Math.floor(Math.random() * counter);
 
         // Decrease counter by 1
         counter--;
 
         // And swap the last element with it
-        let temp = array[counter];
+        var temp = array[counter];
         array[counter] = array[index];
         array[index] = temp;
     }
@@ -114,4 +113,3 @@ function slideChanged(index) {
    //console.log('Slide Changed callback triggered. \n == Slide index is: ' + index + ' ==');
 }
     }
-})();
