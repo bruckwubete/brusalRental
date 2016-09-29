@@ -30,15 +30,15 @@
     <!-- Add your site or application content here -->
     <div ng-controller="applicaitonController as appCtrl" ng-cloak layout-fill>
 
-      <div class="demo-layout-transparent" layout="column">
+      <div class="demo-layout-transparent" layout="row" flex="100">
         <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
-            layout-fill
             on-selected-click="appCtrl.selectedClick(index)"
             on-slide-change="appCtrl.slideChanged(index)"
             on-last-slide="appCtrl.lastSlide(index)"
             on-before-change="appCtrl.beforeChange(index)">
-        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0">
-            <img id="slide" ng-src="http://image.tmdb.org/t/p/w1920{{slide.poster_path}}"/>
+        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0"
+            >
+            <img id="slide" lazy-img="http://image.tmdb.org/t/p/w300{{slide.poster_path}}" flex-xs="85"/>
         </carousel3d-slide>
         </carousel3d>
             <div class="mdl-card__menu">
@@ -114,7 +114,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/app.route.js"></script>
+        <script src="/app.route.js"></script>
         <script src="scripts/services/moviesDatabaseService.js"></script>
         <script src="scripts/controllers/applicationController.js"></script>
         <script src="scripts/controllers/movies.js"></script>
