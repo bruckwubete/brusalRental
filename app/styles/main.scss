@@ -73,7 +73,25 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
 
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
 }
 
 .demo-layout-transparent {
@@ -92,12 +110,35 @@ body {
 }
 
 
+#container{
+  height: 100%;
+}
 
+#black-background{
+  background-color: black
+}
+
+
+.backdrop-container {
+  width: 100%;
+  position: absolute;
+}
+
+.backdrop-container .backdrop-image {
+  width: 100%;
+}
 
 .backdrop-container::before {
-  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content:'';
   background-image: -webkit-linear-gradient(top, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
   background-image:    -moz-linear-gradient(top, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
   background-image:      -o-linear-gradient(top, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
   background-image:         linear-gradient(to bottom, rgba(0,0,0, 0.8), rgba(0,0,0, 0.75),  rgba(0,0,0,1.0));
+}
+
+.movie-poster img {
+  width: 100%;
 }

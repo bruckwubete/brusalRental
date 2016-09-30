@@ -5,18 +5,7 @@
   angular
     .module('dvdRentalFrontendApp')
     // John Papa [Style Y073] Unique directive prefix mdb
-    .directive('mdbBackdrop', mdbBackdrop)
-    .directive('backgroundImage', function(){
-	return function(scope, element, attrs){
-		restrict: 'A',
-		attrs.$observe('backgroundImage', function(value) {
-			element.css({
-				'background': 'url(' +'https://image.tmdb.org/t/p/w1920' + value +')',
-        'background-size': '100% 100%'
-			});
-		});
-	};
-});
+    .directive('mdbBackdrop', mdbBackdrop);
 
   mdbBackdrop.$inject = []
 
