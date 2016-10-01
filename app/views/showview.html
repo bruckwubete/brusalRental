@@ -1,12 +1,13 @@
-<div flex="100">
-<mdb-backdrop path="showView.show.backdrop_path" ng-if="showView.show.backdrop_path" layout-fill flex="100"></mdb-backdrop>
-<div flex="100" layout="row" layout-align="center">
-<div layout="column" flex="55" flex-xs="100" layout-align="none center" layout-fill>
-    <div class="col-sm-12" layout="row">
+<div id="black-background" layout="column" flex="100">
+<mdb-backdrop layout-fill path="showView.show.backdrop_path" ng-if="showView.show.backdrop_path"></mdb-backdrop>
+<div>
+<div class="row no-margin" layout="column" flex flex-xs="100" layout-align="none center" layout-fill layout-padding>
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" >
+    <div flex class="row">
       <h1 class="page-header">{{showView.show.name}}
         <em class="small" ng-show="showView.show.release_date">({{showView.show.release_date | date:'yyyy'}})</em>
-        <em class="small" ng-show="!showView.show.release_date && showView.movie.status">({{showView.show.status}})</em>
-        <span ng-show="showView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
+        <em class="small" ng-show="!showView.show.release_date && showView.show.status">({{showView.show.status}})</em>
+        <span ng-show="showView.show.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
       </h1>
     </div>
 
@@ -21,19 +22,18 @@
     </div>
   </div> -->
 
-  <div layout="row" layout-align="space-between">
+  <div class="row">
     <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
-        <img ng-if="showView.show.poster_path" class="media-object" width="260" lazy-img="http://image.tmdb.org/t/p/w1920{{showView.show.poster_path}}" alt="{{showView.show.title}}">
+        <img ng-if="showView.show.poster_path" class="media-object" width="400" lazy-img="http://image.tmdb.org/t/p/w300{{showView.show.poster_path}}" alt="{{showView.show.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{showView.show.title}}" alt="{{showView.show.title}}" ng-if="!showView.show.poster_path && showView.show.title">
       </div>
     </div>
-
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
       <div class="row">
         <div class="col-sm-12">
-          <a ng-href="shows/genre/{{genre.id}}" ng-repeat="genre in showView.show.genres" style="display:inline-block; margin:0 5px 10px 0;">
+          <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in showView.show.genres" style="display:inline-block; margin:0 5px 10px 0;">
             <h4 class="label label-primary" style="font-size: 100%;">{{genre.name}}</h4>
           </a>
           <hr style="margin: 10px 0;">
@@ -41,29 +41,10 @@
       </div>
 
       <!-- torrents -->
-      <div class="row">
-        <div class="col-sm-12">
-          <p ng-show="showView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
 
-          <em ng-hide="showView.show.torrentsError || showView.show.torrents.length > 0 || showView.torrentsLoading">No torrents available</em>
-
-          <em ng-show="showView.show.torrentsError">Something went wrong - we couldn't retrieve torrent information for this show</em>
-
-          <div class="torrent-details" ng-repeat="torrent in showView.show.torrents">
-            <a ng-href="{{torrent.magnet_link}}"><i class="fa fa-magnet fa-rotate-180"></i> {{torrent.quality}} </a><i class="fa fa-play" ng-click="showView.playTorrent(torrent)"></i>
-          </div>
-          <hr style="margin-top: 10px;">
-        </div>
-      </div>
       <!-- end -->
 
-      <div class="row" ng-if="showView.torrentUrl">
-        <div class="col-sm-12">
-          <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{showView.show.backdrop_path}}" style="width:100%">
-            <source ng-src="{{showView.torrentUrl}}" type="video/mp4"/>
-          </video>
-        </div>
-      </div>
+
 
 <!--       <div class="row">
         <div class="col-sm-12">
@@ -71,28 +52,23 @@
         </div>
       </div> -->
 
-      <div layout="row">
+      <div style="bottom-margin:100px">
+        <jk-rating-stars max-rating="10" rating="showView.show.vote_average" read-only="true">
+          </jk-rating-stars>
+      </div>
+      <span>&nbsp;</span>
+
+      <div class="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="showView.show.tagline" class="text-upper text-bold text-xl">{{showView.show.tagline}}</p>
           <p ng-show="showView.show.overview" style="font-size: 1.1em;">{{showView.show.overview}}</p>
-          <em ng-hide="showView.show.overview">No show synopsis available</em>
-        </div>
-        <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
-          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
-            <p class="text-bold" style="font-size: 6.3em; margin:0;">{{showView.show.vote_average | number:1}}</p>
-            <p class="text-upper small" style="margin:0;">From {{showView.show.vote_count}} votes</p>
-          </div>
-
-          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
-            <uib-rating ng-show="app.user.id" ng-model="showView.show.account_states.rated.value" max="10" ng-change="showView.ratingChanged()"></uib-rating>
-            <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
-          </div>
+          <em ng-hide="showView.show.overview">No movie synopsis available</em>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
+      <div class="row" layout="column">
+        <div>
           <hr>
-          <div class="row">
+          <div layout="row">
             <div class="col-xs-6 col-sm-3 col-md-4">
               <p class="text-upper">Directed by</p>
               <p ng-repeat="director in showView.show.directors">
@@ -107,45 +83,45 @@
               </p>
               <p ng-hide="showView.show.writers.length" class="text-muted">Not available</p>
             </div>
-            <div class="col-xs-12 col-sm-5 col-md-4">
-              <button ng-hide="showView.show.account_states.watchlist" ng-click="showView.toggleWatchlist()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Watchlist</button>
-              <button ng-show="showView.show.account_states.watchlist" ng-click="showView.toggleWatchlist()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Watchlist</button>
-
-              <button ng-hide="showView.show.account_states.favorite" ng-click="showView.toggleFavorite()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Favorites</button>
-              <button ng-show="showView.show.account_states.favorite" ng-click="showView.toggleFavorite()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Favorites</button>
-
-              <button ng-click="showView.playTrailer()" ng-show="showView.getTrailer()" class="btn btn-block btn-lg btn-info"><i class="fa fa-video-camera"></i> Watch Trailer</button>
-            </div>
           </div>
+        </div>
+        <div layout="row">
+          <md-button class=" md-icon-button md-accent"><md-icon>favorite_border</md-icon><md-tooltip>Add to favorites</md-tooltip></md-button>
+          <md-button ng-hide="true" class="md-icon-button  md-accent"><md-icon>favorite</md-icon><md-tooltip>Remove form favorites</md-tooltip></md-button>
+          <md-button ng-click="showView.watchTrailer = !showView.watchTrailer " ng-show="!showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>play_arrow</md-icon><md-tooltip>Watch Trailer</md-tooltip></md-button>
+        </div>
+        <div ng-if="showView.watchTrailer" layout="row">
+          <youtube-video video-id="showView.show.videos[0].key"></youtube-video>
+          <md-button ng-click="showView.watchTrailer = !showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
         </div>
       </div>
     </div>
 
   </div>
+  <div class="col-sm-12">
+    <h2 class="page-header">Cast</h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in showView.show.cast | limitTo : 8">
+      <div class="media">
+        <div class="pull-left">
 
-    <div class="col-sm-12">
-      <h2 class="page-header">Cast</h2>
-    </div>
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+            <img ng-click="showView.loadPersonView(actor.id)" ng-if="actor.profile_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w300/{{actor.profile_path}}" alt="{{actor.name}}">
+            <img ng-click="showView.loadPersonView(actor.id)" ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
 
-    <div class="row">
-      <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in showView.cast | limitTo : 8">
-        <div class="media">
-          <div class="pull-left">
-
-              <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
-              <img ng-click="showView.loadPersonView(actor.id)" ng-if="actor.profile_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w1920/{{actor.profile_path}}" alt="{{actor.name}}">
-              <img ng-click="showView.loadPersonView(actor.id)" ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
-
-          </div>
-          <div class="media-body">
-            <a>
-              <p ng-click="showView.loadPersonView(actor.id)" class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
-            </a>
-            <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
-          </div>
+        </div>
+        <div class="media-body">
+          <a>
+            <p ng-click="movieView.loadPersonView(actor.id)" class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
+          </a>
+          <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
         </div>
       </div>
     </div>
-    </div>
-
-    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
