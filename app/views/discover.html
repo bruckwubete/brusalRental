@@ -5,7 +5,7 @@
   <md-grid-tile md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
                  ng-repeat = "item in discoverCtrl.popularItems | limitTo : 40">
     <md-card>
-           <img ng-click="discoverCtrl.loadMovieView(item.id)" ng-src="http://image.tmdb.org/t/p/w1920{{item.poster_path}}"
+           <img ng-click="discoverCtrl.loadMovieView(item.id)" src="../../assets/GIFS/kit-loading.gif" lazy-img="http://image.tmdb.org/t/p/w1920{{item.poster_path}}"
                 class="md-media-lg card-media"
                 alt="item poster image">
     </md-card>

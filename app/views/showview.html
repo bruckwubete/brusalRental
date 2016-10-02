@@ -52,10 +52,13 @@
         </div>
       </div> -->
 
-      <div style="bottom-margin:100px">
+      <div style="bottom-margin:100px" class="md-button">
         <jk-rating-stars max-rating="10" rating="showView.show.vote_average" read-only="true">
+
           </jk-rating-stars>
+          <md-tooltip>{{showView.show.vote_average}}/10 from {{showView.show.vote_count}} voters</md-tooltip>
       </div>
+
       <span>&nbsp;</span>
 
       <div class="row">
@@ -94,6 +97,9 @@
           <youtube-video video-id="showView.show.videos[0].key"></youtube-video>
           <md-button ng-click="showView.watchTrailer = !showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
         </div>
+
+        <div class="torrentsTime" >
+        </div>
       </div>
     </div>
 
@@ -107,15 +113,16 @@
         <div class="pull-left">
 
             <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
-            <img ng-click="showView.loadPersonView(actor.id)" ng-if="actor.profile_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w300/{{actor.profile_path}}" alt="{{actor.name}}">
-            <img ng-click="showView.loadPersonView(actor.id)" ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
+            <img src="../assets/GIFS/kit-loading.gif" ng-click="showView.loadPersonView(actor.id)" ng-if="actor.profile_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w300/{{actor.profile_path}}" alt="{{actor.name}}">
+            <img ng-click="showView.loadPersonView(actor.id)" ng-hide="actor.profile_path" width="92" height="138" src="../assets/GIFS/kit-loading.gif" ng-src="../assets/PNG/kit-no-img.png">
 
         </div>
         <div class="media-body">
           <a>
-            <p ng-click="movieView.loadPersonView(actor.id)" class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
+            <span ng-click="showView.loadPersonView(actor.id)" class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</span>
           </a>
-          <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
+          <br>
+          <span ng-show="actor.character" class="small text-muted">{{actor.character}}</span>
         </div>
       </div>
     </div>

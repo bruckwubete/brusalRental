@@ -23,10 +23,4 @@ angular
     'jkAngularRatingStars',
     'angular-carousel-3d',
     'angularLazyImg',
-    'youtube-embed',
-    'lub-tmdb-api']).value('lubTmdbApiKey','02995914fdeb3ab56aa5d4c1ea6e94aa')
-  .config(['$httpProvider', function($httpProvider) {
-
-    $httpProvider.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
-    }
-]);
+    'youtube-embed',]);
