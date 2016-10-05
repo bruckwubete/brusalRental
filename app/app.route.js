@@ -8,6 +8,23 @@
           //
           // Now set up the states
           $stateProvider
+          .state('signin', {
+            url : '/signin',
+            templateUrl: 'views/signin.html',
+            controller: 'SigninController',
+            controllerAs: 'signinCtrl',
+            data : {
+                showSideNav : false
+            }
+          })
+          .state('signout', {
+            url : '/signout',
+            controller: 'SignoutController',
+            controllerAs: 'signoutCtrl',
+            data : {
+                showSideNav : false
+            }
+          })
           .state('discover', {
             url : '/discover',
             templateUrl: 'views/discover.html',

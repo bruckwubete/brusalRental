@@ -2,9 +2,9 @@
 <div id="black-background" flex="100">
 
 
-<div flex="100" layout="row" layout-align="center">
-<div layout="column" layout-fill>
-    <div class="col-sm-12">
+<div class="row no-margin" layout="column" flex flex-xs="100" layout-align="none center" layout-fill layout-padding>
+<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+    <div flex class="row">
       <h1 class="page-header">{{personView.person.name}}
         <em class="small" ng-show="personView.person.release_date">({{personView.person.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!personView.person.release_date && personView.person.status">({{personView.person.status}})</em>
@@ -129,5 +129,6 @@
   </div>
 </div>
   </div>
+</div>
 </div>
 </div>

@@ -93,7 +93,7 @@
           <md-button ng-hide="true" class="md-icon-button  md-accent"><md-icon>favorite</md-icon><md-tooltip>Remove form favorites</md-tooltip></md-button>
           <md-button ng-click="showView.watchTrailer = !showView.watchTrailer " ng-show="!showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>play_arrow</md-icon><md-tooltip>Watch Trailer</md-tooltip></md-button>
         </div>
-        <div ng-if="showView.watchTrailer" layout="row">
+        <div ng-show="showView.watchTrailer" layout="row">
           <youtube-video video-id="showView.show.videos[0].key"></youtube-video>
           <md-button ng-click="showView.watchTrailer = !showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
         </div>
@@ -107,7 +107,7 @@
   <div class="col-sm-12">
     <h2 class="page-header">Cast</h2>
   </div>
-  <div class="row">
+  <div class="row" >
     <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in showView.show.cast | limitTo : 8">
       <div class="media">
         <div class="pull-left">
@@ -127,7 +127,6 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 </div>
 </div>
