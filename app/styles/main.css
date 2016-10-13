@@ -1,9 +1,4 @@
-p, em, h2, h1, h3, h4 {
-  color: white;
-}
-
-.resonsive-text{
-  font-size: 5.4vw !important;
+p, em, h1, h2, h3, h4 {
   color: white;
 }
 

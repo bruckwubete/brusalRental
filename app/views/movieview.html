@@ -1,10 +1,12 @@
-<div id="black-background" flex="100" ng-cloack>
+<div id="black-background" flex="100">
 <mdb-backdrop path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path" layout-fill flex="100"></mdb-backdrop>
 <div   layout="row" flex-offset-xl="10" flex-offset-lg="15">
 <div class="row" >
   <div class="col-sm-12 col-md-12 col-lg-11">
-    <div layout="row" layout-fill>
+    <div class="col-sm-12" class="row">
       <h1 class="page-header">{{movieView.movie.title}}
+        <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
+        <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
         <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
       </h1>
     </div>

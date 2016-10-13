@@ -81,14 +81,14 @@ gulp.task('clean:tmp', function (cb) {
 });
 
 gulp.task('start:client', ['start:server', 'styles', 'lint:scripts'], function () {
-  openURL('http://localhost:8080');
+  openURL('http://localhost:9000');
 });
 
 gulp.task('start:server', function() {
   $.connect.server({
     root:[yeoman.temp, yeoman.app],
     livereload:true,
-    port: 8080,
+    port: 9000,
     middleware:function(connect, opt){
       return [['/bower_components',
         connect["static"]('./bower_components')]]
@@ -100,7 +100,7 @@ gulp.task('start:server:test', function() {
   $.connect.server({
     root: [yeoman.test, yeoman.app, yeoman.temp],
     livereload: true,
-    port: 8081,
+    port: 9001,
     middleware:function(connect, opt){
       return [['/bower_components', connect["static"]('./bower_components')]
     ]}
