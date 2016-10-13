@@ -1,38 +1,20 @@
-<md-content class="md-no-momentum" flex="55" layout="row" layout-align="center center">
-  <form layout-fill>
-   <md-input-container class="md-icon-float md-block">
-     <!-- Use floating label instead of placeholder -->
-     <label>Name</label>
-     <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-     <input ng-model="signinCtrl.user.name" type="text">
-   </md-input-container>
-   <md-input-container class="md-icon-float md-block">
-     <!-- Use floating label instead of placeholder -->
-     <label>Password</label>
-     <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-     <input ng-model="signinCtrl.user.password" type="text">
-   </md-input-container>
-   <md-input-container class="md-icon-float md-block">
-     <!-- Use floating label instead of placeholder -->
-     <label>Confirm Password</label>
-     <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-     <input ng-model="signinCtrl.user.password2" type="text">
-   </md-input-container>
+<div layout-fill layout="column" layout-align="center center" flex="100">
+<h3 style="color:black">Kickit Online</h3>
+<div layout="row" flex="100" layout-fill layout-align="center">
+<md-card flex="35" layout-padding>
+<form ng-submit="signinCtrl.submitRegistration(registrationForm)" role="form" ng-init="signinCtrl.registrationForm = {}" layout="column" layout-align="center"
+  <md-input-container>
+    <label>email</label>
+    <input type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>
+  </md-input-container>
 
-   <md-input-container md-no-float class="md-block">
-     <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
-     <input ng-model="signinCtrl.user.phone" type="text" placeholder="Phone Number">
-   </md-input-container>
+  <md-input-container>
+    <label>password</label>
+    <input type="password" name="password" ng-model="signinCtrl.registrationForm.password" required="required"/>
+  </md-input-container>
 
-   <md-input-container class="md-block">
-     <!-- Use floating placeholder instead of label -->
-     <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-     <input ng-model="signinCtrl.user.email" type="email" placeholder="Email (required)" ng-required="true">
-   </md-input-container>
-
-   <md-input-container md-no-float class="md-block">
-     <input ng-model="signinCtrl.user.address" type="text" placeholder="Address" >
-     <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-   </md-input-container>
- </form>
- </md-content>
+  <md-button flex="35" type="submit" md-no-ink class="md-primary">Login</md-button>
+</form>
+</md-card>
+</div>
+</div>

@@ -8,16 +8,27 @@
           //
           // Now set up the states
           $stateProvider
-          .state('signin', {
-            url : '/signin',
-            templateUrl: 'views/signin.html',
-            controller: 'SigninController',
-            controllerAs: 'signinCtrl',
-            data : {
-                showSideNav : false
-            }
+              .state('app', {
+                  url: '/app',
+                  abstract: true,
+                  template: '<ui-view/>',
+                  resolve: {
+                  auth: function($auth) {  
+
+                      return true;
+                  }
+              }
           })
-          .state('signout', {
+          .state('signIn', {
+           url : '/signin',
+          templateUrl: 'views/signin.html',
+           controller: 'SigninController',
+          controllerAs: 'signinCtrl',
+          data : {
+            showSideNav : false
+           }
+          })
+          .state('signOut', {
             url : '/signout',
             controller: 'SignoutController',
             controllerAs: 'signoutCtrl',
@@ -34,7 +45,7 @@
                 showSideNav : false
             }
           })
-          .state('movies', {
+          .state('app.movies', {
             url : '/movies',
             templateUrl: 'views/movies.html',
             controller: 'MoviesCtrl',
@@ -43,7 +54,7 @@
                 showSideNav : true
             }
           })
-          .state('shows', {
+          .state('app.shows', {
             url : '/shows',
             templateUrl: 'views/shows.html',
             controller: 'ShowsCtrl',
@@ -52,7 +63,7 @@
                 showSideNav : true
             }
           })
-          .state('people', {
+          .state('app.people', {
             url : '/people',
             templateUrl: 'views/people.html',
             controller: 'PeopleCtrl',
@@ -61,7 +72,7 @@
                 showSideNav : true
             }
           })
-          .state('movieView', {
+          .state('app.movieView', {
             url : '/movieView/:id/',
             templateUrl: 'views/movieview.html',
             controller: 'MovieviewCtrl',
@@ -71,7 +82,7 @@
                 showSideNav : false
             }
           })
-          .state('showView', {
+          .state('app.showView', {
             url : '/showView/:id/',
             templateUrl: 'views/showview.html',
             controller: 'ShowviewCtrl',
@@ -81,7 +92,7 @@
                 showSideNav : false
             }
           })
-          .state('personView', {
+          .state('app.personView', {
             url : '/personView/:id/',
             templateUrl: '/views/personview.html',
             controller: 'PersonviewCtrl',

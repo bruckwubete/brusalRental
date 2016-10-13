@@ -9,10 +9,10 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-    .controller('SigninController', function ($state) {
+    .controller('SigninController', function ($state, $auth) {
         var vm = this;
+        vm.submitRegistration = submitRegistration;
 
-        console.log("here");
 
 /////////////////////////////////////////////////////
         activate();
@@ -20,5 +20,19 @@ angular.module('dvdRentalFrontendApp')
         function activate(){
 
         }
+
+        function submitRegistration(){
+        	console.log(vm.registrationForm);
+          $auth.submitLogin(vm.registrationForm)
+        .then(function(resp) {
+          // handle success response
+          $state.go('app.movies');
+        })
+        .catch(function(resp) {
+          // handle error response
+          console.log(resp);
+        });
+    };
+        
     });
 })()

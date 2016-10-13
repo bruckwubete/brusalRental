@@ -5,6 +5,7 @@
     function applicaitonController($state,PeopleService, MovieService, ShowService, $scope, $mdMedia){
 
         var vm = this;
+        vm.state = $state;
         vm.showHeader = showHeader;
         vm.showSideNav = showSideNav;
         vm.loadView = loadView;

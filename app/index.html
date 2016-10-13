@@ -29,7 +29,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-controller="applicaitonController as appCtrl" ng-cloak layout-fill>
+    <div ng-controller="applicaitonController as appCtrl" ng-cloak >
+
+    <div ng-if="appCtrl.state.current.name != 'signIn'">
 
       <div class="demo-layout-transparent" layout="row" flex="100">
         <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
@@ -44,8 +46,8 @@
         </carousel3d>
 
             <div class="mdl-card__menu">
-              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">share</i>
+             <a href="#/signin""> <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i></button></a>
               </button>
               <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                 <i class="material-icons">add</i>
@@ -57,11 +59,12 @@
                 <i class="material-icons">group</i>
               </button>
             </div>
+            
         </div>
-
-    <div>
+        </div>
+        <div ng-if="appCtrl.state.current.name != 'signIn'">
         <md-tabs md-stretch-tabs="always" md-auto-select>
-          <md-tab  tab-click-listener="movies" md-no-tab-scontent>
+          <md-tab  tab-click-listener="admin.movies" md-no-tab-scontent>
             <md-tab-label>Movies<md-tab-label>
           </md-tab>
           <md-tab tab-click-listener="shows" md-no-tab-scontent>
@@ -72,10 +75,15 @@
           </md-tab>
         </md-tabs>
     </div>
+        </div>
 
+    
+
+    
     <div flex="100" ui-view></div>
 
-  </div>
+
+  
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -95,8 +103,10 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-cookie/angular-cookie.min.js"></script>
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
@@ -120,6 +130,8 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="/app.route.js"></script>
+        <script src="/app.config.js"></script>
+        <script src="/app.auth-interseptor.service.js"></script>
         <script src="scripts/services/moviesDatabaseService.js"></script>
         <script src="scripts/controllers/applicationController.js"></script>
         <script src="scripts/controllers/movies.js"></script>
