@@ -6,7 +6,7 @@
 <div flex="100" layout="row" layout-align="center">
 <div layout="column" flex="66" flex-xs="100" layout-align="center" layout-fill>
     <div class="col-sm-12">
-      <h1 class="page-header">{{personView.person.name}}
+      <h1 class="page-header resonsive-text">{{personView.person.name}}
         <em class="small" ng-show="personView.person.release_date">({{personView.person.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!personView.person.release_date && personView.person.status">({{personView.person.status}})</em>
         <span ng-show="personView.person.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
@@ -25,61 +25,24 @@
   </div> -->
 
   <div layout="row">
-    <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+    <div class="col-xs-8 col-sm-3 col-md-3 col-lg-3">
       <div class="movie-poster">
         <img ng-if="personView.person.profile_path" class="media-object" width="300" lazy-img="https://image.tmdb.org/t/p/w300/{{personView.person.profile_path}}" alt="{{personView.person.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{personView.person.title}}" alt="{{personView.person.title}}" ng-if="!personView.person.poster_path && personView.person.title">
       </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-      <div class="row">
-        <div class="col-sm-12">
-          <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in personView.person.genres" style="display:inline-block; margin:0 5px 10px 0;">
-            <h4 class="label label-primary" style="font-size: 100%;">{{genre.name}}</h4>
-          </a>
-          <hr style="margin: 10px 0;">
-        </div>
-      </div>
-
-      <!-- torrents -->
-      <div layout="row">
-        <div class="col-sm-12">
-          <p ng-show="movieView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
-
-          <em ng-hide="personView.person.torrentsError || personView.person.torrents.length > 0 || movieView.torrentsLoading">No torrents available</em>
-
-          <em ng-show="personView.person.torrentsError">Something went wrong - we couldn't retrieve torrent information for this movie</em>
-
-          <div class="torrent-details" ng-repeat="torrent in personView.person.torrents">
-            <a ng-href="{{torrent.magnet_link}}"><i class="fa fa-magnet fa-rotate-180"></i> {{torrent.quality}} </a><i class="fa fa-play" ng-click="movieView.playTorrent(torrent)"></i>
-          </div>
-          <hr style="margin-top: 10px;">
-        </div>
-      </div>
-      <!-- end -->
-
-      <div layout="row" ng-if="movieView.torrentUrl">
-        <div class="col-sm-12">
-          <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{personView.person.backdrop_path}}" style="width:100%">
-            <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
-          </video>
-        </div>
-      </div>
-
-<!--       <div class="row">
-        <div class="col-sm-12">
-          <mdb-torrent-video source="'play-test/file.mp4'" type="video/mp4" poster="personView.person.backdrop_path"></mdb-torrent-video>
-        </div>
-      </div> -->
-
-      <div layout="row">
-        <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
+      <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="personView.person.tagline" class="text-upper text-bold text-xl">{{personView.person.tagline}}</p>
           <p ng-show="personView.person.biography" style="font-size: 1.1em;">{{personView.person.biography}}</p>
           <em ng-hide="personView.person.overview">No movie synopsis available</em>
-        </div>
+      </div>
+      
+    </div>
+  </div>
+      
+      
+      <div layout="row">
+        
         <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
           <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
             <p class="text-bold" style="font-size: 6.3em; margin:0;">{{personView.person.vote_average | number:1}}</p>
