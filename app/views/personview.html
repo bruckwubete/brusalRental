@@ -1,11 +1,10 @@
 
-<div style="background-color: black;" flex="100">
-<mdb-backdrop path="personView.person.backdrop_path" ng-if="personView.person.backdrop_path"></mdb-backdrop>
+<div id="black-background" flex="100">
 
 
-<div flex="100" layout="row" layout-align="center">
-<div layout="column" flex="66" flex-xs="100" layout-align="center" layout-fill>
-    <div class="col-sm-12">
+<div class="row no-margin" layout="column" flex flex-xs="100" layout-align="none center" layout-fill layout-padding>
+<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+    <div flex class="row">
       <h1 class="page-header">{{personView.person.name}}
         <em class="small" ng-show="personView.person.release_date">({{personView.person.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!personView.person.release_date && personView.person.status">({{personView.person.status}})</em>
@@ -44,29 +43,15 @@
       </div>
 
       <!-- torrents -->
-      <div layout="row">
-        <div class="col-sm-12">
-          <p ng-show="movieView.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
+      <div style="bottom-margin:100px" class="md-button">
+        <jk-rating-stars max-rating="10" rating="personView.person.popularity-20" read-only="true">
 
-          <em ng-hide="personView.person.torrentsError || personView.person.torrents.length > 0 || movieView.torrentsLoading">No torrents available</em>
-
-          <em ng-show="personView.person.torrentsError">Something went wrong - we couldn't retrieve torrent information for this movie</em>
-
-          <div class="torrent-details" ng-repeat="torrent in personView.person.torrents">
-            <a ng-href="{{torrent.magnet_link}}"><i class="fa fa-magnet fa-rotate-180"></i> {{torrent.quality}} </a><i class="fa fa-play" ng-click="movieView.playTorrent(torrent)"></i>
-          </div>
-          <hr style="margin-top: 10px;">
-        </div>
+          </jk-rating-stars>
+          <md-tooltip>{{personView.person.popularity}}/30 popularity</md-tooltip>
       </div>
       <!-- end -->
 
-      <div layout="row" ng-if="movieView.torrentUrl">
-        <div class="col-sm-12">
-          <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{personView.person.backdrop_path}}" style="width:100%">
-            <source ng-src="{{movieView.torrentUrl}}" type="video/mp4"/>
-          </video>
-        </div>
-      </div>
+
 
 <!--       <div class="row">
         <div class="col-sm-12">
@@ -75,22 +60,12 @@
       </div> -->
 
       <div layout="row">
-        <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
+        <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12 col-lg-10">
           <p ng-show="personView.person.tagline" class="text-upper text-bold text-xl">{{personView.person.tagline}}</p>
           <p ng-show="personView.person.biography" style="font-size: 1.1em;">{{personView.person.biography}}</p>
-          <em ng-hide="personView.person.overview">No movie synopsis available</em>
-        </div>
-        <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
-          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
-            <p class="text-bold" style="font-size: 6.3em; margin:0;">{{personView.person.vote_average | number:1}}</p>
-            <p class="text-upper small" style="margin:0;">From {{personView.person.vote_count}} votes</p>
-          </div>
 
-          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
-            <uib-rating ng-show="app.user.id" ng-model="personView.person.account_states.rated.value" max="10" ng-change="movieView.ratingChanged()"></uib-rating>
-            <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
-          </div>
         </div>
+
       </div>
       <div layout="row">
         <div class="col-sm-12">
@@ -111,13 +86,7 @@
               <p ng-hide="personView.person.writers.length" class="text-muted">Not available</p>
             </div>
             <div class="col-xs-12 col-sm-5 col-md-4">
-              <button ng-hide="personView.person.account_states.watchlist" ng-click="movieView.toggleWatchlist()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Watchlist</button>
-              <button ng-show="personView.person.account_states.watchlist" ng-click="movieView.toggleWatchlist()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Watchlist</button>
 
-              <button ng-hide="personView.person.account_states.favorite" ng-click="movieView.toggleFavorite()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Favorites</button>
-              <button ng-show="personView.person.account_states.favorite" ng-click="movieView.toggleFavorite()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Favorites</button>
-
-              <button ng-click="movieView.playTrailer()" ng-show="movieView.getTrailer()" class="btn btn-block btn-lg btn-info"><i class="fa fa-video-camera"></i> Watch Trailer</button>
             </div>
           </div>
         </div>
@@ -125,29 +94,41 @@
     </div>
 
   </div>
-  <div layout="row">
-    <div class="col-sm-12">
-      <h2 class="page-header">Starring In</h2>
-    </div>
-  </div>
-  <div layout="row">
-    <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in personView.person.credits.cast">
+
+  <div class="row" layout-fill>
+    <div ng-if="personView.person.movie_credits.cast.length" layout-fill >
+      <div class="col-lg-12">
+        <h3 class="page-header">Movie Credits</h3>
+      </div>
+    <div flex-offset="5" class="col-sm-3 col-xs-6 col-md-2 col-lg-2" style="margin-bottom:30px;" ng-repeat="actor in personView.person.movie_credits.cast | limitTo : 8" >
       <div class="media">
         <div class="pull-left">
 
             <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
-            <img ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="{{movieView.API_SETTINGS.baseImageUrl}}w92/{{actor.profile_path}}" alt="{{actor.name}}">
-            <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
+            <img src="../assets/GIFS/kit-loading.gif" ng-click="personView.loadMovieView(actor.id)" ng-if="actor.poster_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w300{{actor.poster_path}}" alt="{{actor.name}}">
+            <img ng-click="personView.loadMovieView(actor.id)" ng-hide="actor.poster_path" width="92" height="138" src="../assets/GIFS/kit-loading.gif" ng-src="../assets/PNG/kit-no-img.png">
 
-        </div>
-        <div class="media-body">
-          <a ng-href="person/{{actor.id}}">
-            <p class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
-          </a>
-          <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
         </div>
       </div>
     </div>
   </div>
+  <div ng-if="personView.person.tv_credits.cast.length" >
+    <div class="col-sm-12">
+      <h3 class="page-header">Show Credits</h3>
+    </div>
+  <div flex-offset="5" class="col-sm-3 col-xs-6 col-md-2 col-lg-2" style="margin-bottom:30px;" ng-repeat="actor in personView.person.tv_credits.cast | limitTo : 8" >
+    <div class="media">
+      <div class="pull-left">
+
+          <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
+          <img src="../assets/GIFS/kit-loading.gif" ng-click="personView.loadShowView(actor.id)" ng-if="actor.poster_path" class="media-object" width="92" height="138" lazy-img="https://image.tmdb.org/t/p/w300{{actor.poster_path}}" alt="{{actor.name}}">
+          <img ng-click="personView.loadShowView(actor.id)" ng-hide="actor.poster_path" width="92" height="138" src="../assets/GIFS/kit-loading.gif" ng-src="../assets/PNG/kit-no-img.png">
+
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
 </div>
 </div>

@@ -8,30 +8,20 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('PersonviewCtrl', function (lubTmdbApi, $state) {
+  .controller('PersonviewCtrl', function (PeopleService, $state) {
     var vm = this;
-    vm.getPerson  = getPerson;
+    vm.loadMovieView = loadMovieView;
+    vm.loadShowView = loadShowView;
     vm.person = {};
     activate();
     function activate(){
-      getPerson();
+      vm.person = PeopleService.get({id : $state.params.id})
     }
 
-    function getPerson(){
-        exec('people','person',$state.params.id)
+    function loadShowView(id){
+      $state.go('showView', {id : id});
     }
-
-    function exec (type, method, query) {
-        lubTmdbApi[type][method]({
-            query: query
-        }).then(suc, err);
+    function loadMovieView(id){
+      $state.go('movieView', {id : id});
     }
-
- function  suc (result){
-       console.log(result);
-       vm.person = result.data;
-   };
-
- function err (results) {
-   }
   });

@@ -13,8 +13,11 @@ angular.module('dvdRentalFrontendApp')
     vm.loadPersonView = loadPersonView;
     activate();
     function activate(){
-      vm.show = ShowService.get({id : $state.params.id});
-      console.log(vm.show);
+      ShowService.get({id : $state.params.id}, function(show){
+         vm.show = show;
+      }, function(){
+         
+      });
     }
 
    function loadPersonView(id){

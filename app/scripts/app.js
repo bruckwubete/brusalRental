@@ -12,7 +12,9 @@ angular
   .module('dvdRentalFrontendApp', [
     'ngAnimate',
     'ngAria',
-    'ngCookies',
+    'ngCookies',,
+    'ipCookie',
+    'ng-token-auth',
     'ngMessages',
     'ngResource',
     'ngRoute',
@@ -23,9 +25,20 @@ angular
     'jkAngularRatingStars',
     'angular-carousel-3d',
     'angularLazyImg',
-    'lub-tmdb-api']).value('lubTmdbApiKey','02995914fdeb3ab56aa5d4c1ea6e94aa')
-  .config(['$httpProvider', function($httpProvider) {
-
-    $httpProvider.defaults.headers.common["Access-Control-Allow-Headers"] = "*"
-    }
-]);
+    'youtube-embed',]).config(function($authProvider) {
+        $authProvider.configure({
+            apiUrl: 'http://localhost:3000/api/v1',
+            tokenValidationPath: '/auth/validate_token',
+             signOutUrl: '/auth/sign_out',
+  confirmationSuccessUrl: window.location.href,
+  emailSignInPath: '/auth/sign_in',
+  storage: 'cookies',
+  tokenFormat: {
+    "access-token": "{{ token }}",
+    "token-type": "Bearer",
+    "client": "{{ clientId }}",
+    "expiry": "{{ expiry }}",
+    "uid": "{{ uid }}"
+  }
+        });
+    });

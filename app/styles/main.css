@@ -1,5 +1,20 @@
+
+.no-margin{
+  margin: 0;
+}
+div.md-button:not([disabled]):hover{
+  background-color: transparent;;
+}
+.md-button.md-icon-button:not([disabled]):hover {
+  background-color: transparent;
+}
+.md-button.md-icon-button:not([disabled]) {
+  background-color: transparent;
+}
+
 p, em, h1, h2, h3, h4 {
   color: white;
+
 }
 
 .browsehappy {
@@ -9,9 +24,6 @@ p, em, h1, h2, h3, h4 {
   padding: 0.2em 0;
 }
 
-body {
-  padding: 0;
-}
 
 #slide {
   height: 100%;
@@ -51,16 +63,7 @@ body {
   margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
 
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
 
 /* Supporting marketing content */
 .marketing {
@@ -106,6 +109,7 @@ body {
 
 .demo-card-wide.mdl-card {
   width: 100%;
+
 }
 
 #container {
@@ -114,15 +118,19 @@ body {
 
 #black-background {
   background-color: black;
+
 }
 
 .backdrop-container {
   width: 100%;
   position: absolute;
+
+
 }
 
 .backdrop-container .backdrop-image {
   width: 100%;
+
 }
 
 .backdrop-container::before {

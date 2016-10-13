@@ -8,44 +8,33 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('MovieviewCtrl', function ($state, lubTmdbApi) {
+  .controller('MovieviewCtrl', function ($state, MovieService, $scope) {
     var vm = this;
     vm.getMovie = getMovie;
     vm.loadPersonView = loadPersonView;
+
     vm.queryResult = [];
     vm.movie= {};
     vm.cast = {};
     vm.crew = {};
+
     activate();
     function activate(){
       getMovie();
     }
 
     function getMovie(){
-        exec('movie','movie',$state.params.id)
-        exec('movie','casts',$state.params.id);
+
+      MovieService.get({id : $state.params.id}, function(movie){
+          vm.movie = movie;
+        }, function(){
+  
+        });
+
     }
 
-    function exec (type, method, query) {
-        lubTmdbApi[type][method]({
-            query: query
-        }).then(suc, err);
+    function loadPersonView(id){
+      $state.go('personView', {id : id});
     }
-
- function  suc (result){
-       vm.queryResult.push(result.data);
-       vm.movie = vm.queryResult[0];
-       if(vm.queryResult[1]){
-         vm.cast = vm.queryResult[1].cast;
-         vm.crew = vm.queryResult[1].crew;
-       }
-};
-   function loadPersonView(id){
-       $state.go('personView',{id : id})
-   }
-
-
- function err (results) {
-   }
 
   });

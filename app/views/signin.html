@@ -1,0 +1,20 @@
+<div layout-fill layout="column" layout-align="center center" flex="100">
+<h3 style="color:black">Kickit Online</h3>
+<div layout="row" flex="100" layout-fill layout-align="center">
+<md-card flex="35" layout-padding>
+<form ng-submit="signinCtrl.submitRegistration(registrationForm)" role="form" ng-init="signinCtrl.registrationForm = {}" layout="column" layout-align="center"
+  <md-input-container>
+    <label>email</label>
+    <input type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>
+  </md-input-container>
+
+  <md-input-container>
+    <label>password</label>
+    <input type="password" name="password" ng-model="signinCtrl.registrationForm.password" required="required"/>
+  </md-input-container>
+
+  <md-button flex="35" type="submit" md-no-ink class="md-primary">Login</md-button>
+</form>
+</md-card>
+</div>
+</div>

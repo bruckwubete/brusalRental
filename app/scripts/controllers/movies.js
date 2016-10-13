@@ -17,11 +17,7 @@ angular.module('dvdRentalFrontendApp')
 
         function activate(){
                 vm.formBusy = true;
-                vm.popularMovies = MovieService.queryAll(function(movie){
-
-                }, function(){
-
-                });
+                vm.popularMovies = MovieService.queryAll();
                 vm.formBusy = false;
 
         }
