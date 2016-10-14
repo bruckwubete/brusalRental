@@ -1,19 +1,26 @@
-<div layout-fill layout="column" layout-align="center center" flex="100">
-<h3 style="color:black">Kickit Online</h3>
-<div layout="row" flex="100" layout-fill layout-align="center">
-<md-card flex="35" layout-padding>
-<form ng-submit="signinCtrl.submitRegistration(registrationForm)" role="form" ng-init="signinCtrl.registrationForm = {}" layout="column" layout-align="center"
+<div layout="column" layout-fill>
+  <div >
+      <img width="100%" height="550" src="../images/backgroundPic.jpg">
+    </div>
+    <div layout="row" layout-align="center start" class="login-header">
+        <h3 style="color:white">Kickit Online</h3>
+</div>
+<div layout="row" layout-align="center start" class="login-form">
+<md-card flex="35" layout-padding class="md-whiteframe-4dp">
+<form name="logIn" ng-submit="signinCtrl.submitRegistration(registrationForm)" ng-init="signinCtrl.registrationForm = {}" novalidate>
+  <md-card-content layout="column">
   <md-input-container>
-    <label>email</label>
-    <input type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>
+    <label for="email">Email</label>
+    <input aria-label="email" type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>
   </md-input-container>
-
   <md-input-container>
-    <label>password</label>
-    <input type="password" name="password" ng-model="signinCtrl.registrationForm.password" required="required"/>
+    <input aria-label="password" type="password" name="password" ng-model="signinCtrl.registrationForm.password" required="required"/>
+    <label>Password</label>
   </md-input-container>
-
-  <md-button flex="35" type="submit" md-no-ink class="md-primary">Login</md-button>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="center">
+      <md-button type="submit" class="md-primary" aria-label="login">Login</md-button>
+  </md-card-actions>
 </form>
 </md-card>
 </div>

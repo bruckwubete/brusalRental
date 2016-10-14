@@ -9,13 +9,11 @@
           // Now set up the states
           $stateProvider
               .state('app', {
-                  url: '/app',
                   abstract: true,
-                  template: '<ui-view/>',
+                  templateUrl: 'views/home.html',
                   resolve: {
                   auth: function($auth) {  
-
-                      return true;
+                      return $auth.validateUser();
                   }
               }
           })

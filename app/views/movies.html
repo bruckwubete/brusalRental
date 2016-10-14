@@ -11,12 +11,17 @@
 </div>-->
 <div ng-cloak>
   <md-content layout-padding>
+    <md-input-container layout-fill>
+      <label>Search Movies</label>
+      <md-icon>search</md-icon>
+      <input ng-model="movies.searchText" aria-label="search field" />
+    </md-input-container>
     <md-grid-list
         md-cols-gt-md="12" md-cols="3" md-cols-md="8"
         md-row-height-gt-md="1:1" md-row-height="4:3"
         md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
       <md-grid-tile
-          ng-repeat = " movie in movies.popularMovies"
+          ng-repeat = " movie in movies.popularMovies | filter : movies.searchText"
           md-colspan-xl="3"
           md-rowspan-xl="4"
           md-colspan-lg="3"

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css" />
     <link rel="stylesheet" href="/bower_components/angular-carousel-3d/dist/carousel-3d.css" />
-    <link rel="stylesheet" href="/bower_components/materialize/bin/materialize.css" />
     <link rel="stylesheet" href="/bower_components/angular-jk-rating-stars/dist/jk-rating-stars.css" />
     <!-- endbower -->
     <!-- endbuild -->
@@ -29,62 +28,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-controller="applicaitonController as appCtrl" ng-cloak >
-
-    <div ng-if="appCtrl.state.current.name != 'signIn'">
-
-      <div class="demo-layout-transparent" layout="row" flex="100">
-        <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
-            on-selected-click="appCtrl.selectedClick(index)"
-            on-slide-change="appCtrl.slideChanged(index)"
-            on-last-slide="appCtrl.lastSlide(index)"
-            on-before-change="appCtrl.beforeChange(index)">
-        <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0"
-            >
-            <img id="slide" ng-src="http://image.tmdb.org/t/p/w300{{slide.poster_path}}" layout-fill/>
-        </carousel3d-slide>
-        </carousel3d>
-
-            <div class="mdl-card__menu">
-             <a href="#/signin""> <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">share</i></button></a>
-              </button>
-              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">add</i>
-              </button>
-              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">share</i>
-              </button>
-              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">group</i>
-              </button>
-            </div>
-            
-        </div>
-        </div>
-        <div ng-if="appCtrl.state.current.name != 'signIn'">
-        <md-tabs md-stretch-tabs="always" md-auto-select>
-          <md-tab  tab-click-listener="admin.movies" md-no-tab-scontent>
-            <md-tab-label>Movies<md-tab-label>
-          </md-tab>
-          <md-tab tab-click-listener="shows" md-no-tab-scontent>
-            <md-tab-label>Shows<md-tab-label>
-          </md-tab>
-          <md-tab tab-click-listener="people" md-no-tab-scontent>
-             <md-tab-label>People<md-tab-label>
-          </md-tab>
-        </md-tabs>
-    </div>
-        </div>
-
-    
-
     
     <div flex="100" ui-view></div>
-
-
-  
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -118,8 +63,6 @@
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-swipe/dist/angular-swipe.js"></script>
     <script src="/bower_components/angular-carousel-3d/dist/carousel-3d.js"></script>
-    <script src="/bower_components/materialize/bin/materialize.js"></script>
-    <script src="/bower_components/angular-materialize/src/angular-materialize.js"></script>
     <script src="/bower_components/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
     <script src="/bower_components/angular-lazy-img/release/angular-lazy-img.js"></script>
     <script src="/bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>

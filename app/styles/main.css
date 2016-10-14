@@ -2,6 +2,20 @@
 .no-margin{
   margin: 0;
 }
+
+.login-form{
+  position: absolute;
+  width: 100%;
+  top: 450px;
+}
+
+.login-header{
+  position: absolute;
+  width: 100%;
+  top: 350px;
+}
+
+
 div.md-button:not([disabled]):hover{
   background-color: transparent;;
 }

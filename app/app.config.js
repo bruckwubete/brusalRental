@@ -1,9 +1,10 @@
-  angular.module('dvdRentalFrontendApp').run(function($rootScope){
+  angular.module('dvdRentalFrontendApp').run(function($rootScope, $state){
     
 
-    $rootScope.$on('auth:invalid', function(e, $state){
+    $rootScope.$on('auth:invalid', function(e){
          console.log(e);
-        $state.go('signIn', {}, {reload : true});
+         console.log($state);
+         $state.go('signIn', {reason : e.name});
         }
     )
 
