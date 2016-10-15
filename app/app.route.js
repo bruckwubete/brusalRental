@@ -13,7 +13,11 @@
                   templateUrl: 'views/home.html',
                   resolve: {
                   auth: function($auth) {  
-                      return $auth.validateUser();
+                      $auth.validateUser().then(function(resp){
+                          return resp;
+                      }).catch(function(resp){
+                        return false;
+                      });
                   }
               }
           })

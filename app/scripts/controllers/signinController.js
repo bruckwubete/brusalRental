@@ -9,9 +9,10 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-    .controller('SigninController', function ($state, $auth) {
+    .controller('SigninController', function ($state, $auth, FeedbackService) {
         var vm = this;
         vm.submitRegistration = submitRegistration;
+        vm.Facebooklogin = Facebooklogin;
 
 
 /////////////////////////////////////////////////////
@@ -22,17 +23,30 @@ angular.module('dvdRentalFrontendApp')
         }
 
         function submitRegistration(){
-        	console.log(vm.registrationForm);
           $auth.submitLogin(vm.registrationForm)
         .then(function(resp) {
           // handle success response
-          $state.go('app.movies');
+          FeedbackService.showSuccess("Welcome " + resp.email);
+          $state.go('app.movies', {user : resp}, {reload : true});
         })
         .catch(function(resp) {
           // handle error response
+          FeedbackService.showSuccess(resp.reason.toUpperCase() +": " + resp.errors[0]);
           console.log(resp);
         });
-    };
+        };
+        
+        function Facebooklogin(){
+          console.log('here');
+          $auth.authenticate('facebook', {
+            
+          }).then(function(resp){
+             console.log(resp);
+             $state.go('signIn');
+          }).catch(function(resp){
+             console.log(resp);
+          });
+        }
         
     });
 })()

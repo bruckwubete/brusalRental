@@ -25,8 +25,7 @@
     },
     responseError: function(response) {
       if (response.status === 401) {
-        $location.path('/signin');
-        ipCookie.remove('access-token');
+        ipCookie.remove('auth_headers');
       }
       return $q.reject(response);
     }

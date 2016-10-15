@@ -9,11 +9,12 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-    .controller('MoviesCtrl', function (MovieService, $state) {
+    .controller('MoviesCtrl', function (MovieService, $state, $mdMedia) {
         var vm = this;
         vm.popularMovies = [];
         vm.loadMovieView = loadMovieView;
         vm.formBusy = false;
+        vm.calculateLimit = calculateLimit;
 
         function activate(){
                 vm.formBusy = true;
@@ -26,7 +27,13 @@ angular.module('dvdRentalFrontendApp')
         function loadMovieView(id){
             $state.go('movieView', {id : id});
         }
-
+        
+        function calculateLimit(){
+            if($mdMedia('xs') || $mdMedia('sm')){
+                return 18;
+            }
+            return 20;
+        }
 
     });
 })()

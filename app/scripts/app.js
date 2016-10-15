@@ -39,6 +39,11 @@ angular
     "client": "{{ clientId }}",
     "expiry": "{{ expiry }}",
     "uid": "{{ uid }}"
-  }
+  },
+  authProviderPaths: {
+        github:   '/auth/github',
+        facebook: '/auth/facebook',
+        google:   '/auth/google'
+      }
         });
     });

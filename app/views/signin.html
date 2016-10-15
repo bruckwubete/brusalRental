@@ -1,6 +1,6 @@
-<div layout="column" layout-fill>
+<div layout="column" layout-fill ng-cloak>
   <div >
-      <img width="100%" height="550" src="../images/backgroundPic.jpg">
+      <img width="100%" height="600" src="../images/backgroundPic.jpg">
     </div>
     <div layout="row" layout-align="center start" class="login-header">
         <h3 style="color:white">Kickit Online</h3>
@@ -9,6 +9,15 @@
 <md-card flex="35" layout-padding class="md-whiteframe-4dp">
 <form name="logIn" ng-submit="signinCtrl.submitRegistration(registrationForm)" ng-init="signinCtrl.registrationForm = {}" novalidate>
   <md-card-content layout="column">
+    <div layout="row">
+         <md-button 
+                 title="Launch Google.com in new window"
+                 ng-click="signinCtrl.Facebooklogin()"
+                 aria-label="login with facebook"
+                 class="md-icon-button launch" >
+        <md-icon>apps</md-icon>
+      </md-button>
+      </div>
   <md-input-container>
     <label for="email">Email</label>
     <input aria-label="email" type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>

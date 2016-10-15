@@ -15,10 +15,15 @@
   top: 350px;
 }
 
+md-toast {
+  position: fixed;
+  
+}
 
 div.md-button:not([disabled]):hover{
   background-color: transparent;;
 }
+
 .md-button.md-icon-button:not([disabled]):hover {
   background-color: transparent;
 }
