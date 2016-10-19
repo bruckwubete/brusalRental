@@ -2,13 +2,14 @@
     'use strict';
     angular.module('dvdRentalFrontendApp')
             .controller('applicaitonController',applicaitonController);
-    function applicaitonController($state,PeopleService, MovieService, ShowService, $scope, $mdMedia){
+    function applicaitonController($state,PeopleService, MovieService, ShowService, $scope, $mdMedia, $mdSidenav){
 
         var vm = this;
         vm.state = $state;
         vm.showHeader = showHeader;
         vm.showSideNav = showSideNav;
         vm.loadView = loadView;
+        vm.toggleSidenav = toggleSidenav;
         vm.slides = [];
         vm.options = {
             sourceProp: '',
@@ -43,6 +44,10 @@
                     vm.slides.push(show);
               })
             });
+        }
+        
+        function toggleSidenav(){
+            $mdSidenav('kit-left-sidenav').toggle();
         }
 
 
