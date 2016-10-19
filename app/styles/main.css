@@ -1,20 +1,6 @@
-.kit-list-content{
-  padding-top: 0;
-}
-.kit-accent-button{
-  color: #ff4081 !important;
-}
+
 .no-margin{
   margin: 0;
-}
-
-md-sidenav, md-backdrop {
-position: fixed !important;
-}
-
-.no-overflow {
-position: fixed;
-overflow: hidden;
 }
 
 .login-form{
@@ -28,8 +14,6 @@ overflow: hidden;
   width: 100%;
   top: 350px;
 }
-
-
 
 md-toast {
   position: fixed;
