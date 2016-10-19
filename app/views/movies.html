@@ -10,13 +10,39 @@
   </div>
 </div>-->
 <div ng-cloak>
-  <md-content layout-padding>
+        <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools" style="background-color: #5b041c;">
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon>local_movies</md-icon>
+        </md-button>
+        <h2>
+          <span>Movies</span>
+        </h2>
+        <span flex></span>
+        <div layout="column" flex="55">
+            <span>&nbsp;</span>
+        <md-input-container class="md-accent no-margin" flex="100">
+   <md-icon class="material-icons">&#xE8B6;</md-icon>
+   <label style="color:white">Search Movies</label>
+   <input style="color:white" ng-model="movies.searchInput">
+</md-input-container>
+</div>
+<span flex="20">&nbsp;</span>
+ <div layout="column">
+      <span>&nbsp;</span>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon>menu</md-icon>
+        </md-button>
+        </div>
+      </div>
+    </md-toolbar>
+  <md-content layout-padding class="kit-list-content">
     <md-grid-list
         md-cols-gt-md="12" md-cols="3" md-cols-md="8"
         md-row-height-gt-md="1:1" md-row-height="4:3"
         md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
       <md-grid-tile
-          ng-repeat = " movie in movies.popularMovies | limitTo: movies.calculateLimit()"
+          ng-repeat = " movie in movies.popularMovies | limitTo: movies.calculateLimit() | filter: movies.searchInput"
           md-colspan-xl="3"
           md-rowspan-xl="4"
           md-colspan-lg="3"
