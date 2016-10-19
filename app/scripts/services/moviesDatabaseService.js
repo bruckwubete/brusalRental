@@ -9,7 +9,7 @@
  */
 angular.module('dvdRentalFrontendApp')
     .factory('MovieService', function($resource,$http) {
-        return $resource('/api/v1/movies/popular', { id: '@_id' }, {
+        return $resource('/api/v1/movies/popular', { id: '@_id', title: '@_title' }, {
           'get': {
                    url: 'api/v1/movies/details/:id',
                    method: 'GET',
@@ -18,6 +18,10 @@ angular.module('dvdRentalFrontendApp')
                     url: 'api/v1/movies/popular',
                     method: 'GET',
                     isArray : true
+          },
+          search: {
+                 url: 'api/v1/movies/search/:title',
+                 method: 'GET'
           }
         });
     })

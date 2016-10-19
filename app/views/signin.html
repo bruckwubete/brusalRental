@@ -12,10 +12,35 @@
     <div layout="row">
          <md-button 
                  title="Launch Google.com in new window"
-                 ng-click="signinCtrl.Facebooklogin()"
+                 ng-click="signinCtrl.omniauthLogin('facebook')"
                  aria-label="login with facebook"
-                 class="md-icon-button launch" >
-        <md-icon>apps</md-icon>
+                 class="icon " >
+        <img src="../images/facebook-icon.png" alt="facebook-icon" aria-label="facebook icon" layout-fill/>
+        <md-tooltip>Facebook</md-tooltip>
+      </md-button>
+      <md-button 
+                 title="Launch Google.com in new window"
+                 ng-click="signinCtrl.omniauthLogin('twitter')"
+                 aria-label="login with twitter"
+                 class="icon" >
+        <img src="../images/twitter-icon.png" alt="twitter-icon" aria-label="twitter icon" layout-fill/>
+        <md-tooltip>Twitter</md-tooltip>
+      </md-button>
+      <md-button 
+                 title="Launch Google.com in new window"
+                 ng-click="signinCtrl.omniauthLogin('google')"
+                 aria-label="login with google"
+                 class="icon" >
+        <img src="../images/google-mail-icon.png" alt="google-mail-icon" aria-label="google mail icon" layout-fill/>
+        <md-tooltip>Google Mail</md-tooltip>
+      </md-button>
+      <md-button 
+                 title="Launch Google.com in new window"
+                 ng-click="signinCtrl.omniauthLogin('github')"
+                 aria-label="login with github"
+                 class="icon" >
+        <img src="../images/github-icon.png" alt="github-icon" aria-label="github icon" layout-fill/>
+        <md-tooltip>Github</md-tooltip>
       </md-button>
       </div>
   <md-input-container>

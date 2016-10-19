@@ -12,7 +12,7 @@ angular.module('dvdRentalFrontendApp')
     .controller('SigninController', function ($state, $auth, FeedbackService) {
         var vm = this;
         vm.submitRegistration = submitRegistration;
-        vm.Facebooklogin = Facebooklogin;
+        vm.omniauthLogin = omniauthLogin;
 
 
 /////////////////////////////////////////////////////
@@ -36,15 +36,14 @@ angular.module('dvdRentalFrontendApp')
         });
         };
         
-        function Facebooklogin(){
-          console.log('here');
-          $auth.authenticate('facebook', {
+        function omniauthLogin(appName){
+          $auth.authenticate(appName, {
             
           }).then(function(resp){
-             console.log(resp);
-             $state.go('signIn');
+          	console.log(resp);
+             FeedbackService.showSuccess("Welcome " + resp.email);
+             $state.go('app.movies', {user : resp}, {reload:true});
           }).catch(function(resp){
-             console.log(resp);
           });
         }
         

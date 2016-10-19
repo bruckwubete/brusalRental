@@ -1,9 +1,30 @@
   <div ng-controller="applicaitonController as appCtrl" ng-cloak >
-
-
+    
 
       <div class="demo-layout-transparent" layout="column" flex="100">
+             <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="kit-left-sidenav"
+        md-whiteframe="4">
+
+      <md-toolbar>
+        <h1 class="md-toolbar-tools" style="background-color: #5b041c;">Menu</h1>
+      </md-toolbar>
+      <md-content layout-padding layout-fill class="no-overflow">
+        <p show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>
+
+    </md-sidenav>
+      <div layout="column">
+        <div layout="row">
+         <md-button class="md-icon-button md-accent" style="color:white" ng-click="appCtrl.toggleSidenav()"><md-icon>menu</md-icon></md-button>
+         <p style="margin-top:9px;"><b>Menu</b><p>
+         </div>
         <div layout="row" layout-fill>
+         
         <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
             on-selected-click="appCtrl.selectedClick(index)"
             on-slide-change="appCtrl.slideChanged(index)"
@@ -30,28 +51,8 @@
               </button>
             </div>
             </div>
-    <md-input-container layout-fill>
-      <label>Search Movies</label>
-      <md-icon class="md-primary">search</md-icon>
-      <input ng-model="movies.searchText" aria-label="search field" />
-    </md-input-container>
-    
-            
         </div>
-
- 
-
-        <md-tabs md-stretch-tabs="always" md-auto-select>
-          <md-tab  tab-click-listener="app.movies" md-no-tab-scontent>
-            <md-tab-label>Movies<md-tab-label>
-          </md-tab>
-          <md-tab tab-click-listener="app.shows" md-no-tab-scontent>
-            <md-tab-label>Shows<md-tab-label>
-          </md-tab>
-          <md-tab tab-click-listener="app.people" md-no-tab-scontent>
-             <md-tab-label>People<md-tab-label>
-          </md-tab>
-        </md-tabs>
+        </div>
 
   </div>
          <div flex="100" ui-view></div>
