@@ -1,6 +1,9 @@
 .kit-list-content{
   padding-top: 0;
 }
+.auto-margin{
+  margin: auto;
+}
 .kit-accent-button{
   color: #ff4081 !important;
 }

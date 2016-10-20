@@ -8,10 +8,12 @@
  * Controller of the dvdRentalFrontendApp
  */
 angular.module('dvdRentalFrontendApp')
-  .controller('MovieviewCtrl', function ($state, MovieService, $scope) {
+  .controller('MovieviewCtrl', function ($state, MovieService) {
     var vm = this;
     vm.getMovie = getMovie;
     vm.loadPersonView = loadPersonView;
+    vm.back = back;
+    
 
     vm.queryResult = [];
     vm.movie= {};
@@ -34,7 +36,12 @@ angular.module('dvdRentalFrontendApp')
     }
 
     function loadPersonView(id){
-      $state.go('personView', {id : id});
+      $state.go('app.personView', {id : id});
     }
+    
+    function back(){
+      $state.go('app.movies')
+    }
+    
 
   });

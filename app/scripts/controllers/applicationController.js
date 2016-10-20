@@ -124,6 +124,8 @@
                 vm.options.height = 400;
                 vm.options.space = 400;
             }
+            console.log($mdMedia('gt-sm'));
         });
+        
     }
 })();

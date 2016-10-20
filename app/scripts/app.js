@@ -28,7 +28,7 @@ angular
     'angularLazyImg',
     'youtube-embed',]).config(function($authProvider) {
         $authProvider.configure({
-            apiUrl: 'http://192.168.2.215:3000/api/v1',
+            apiUrl: 'http://angularmaterial-bruck.c9users.io/api/v1',
             tokenValidationPath: '/auth/validate_token',
              signOutUrl: '/auth/sign_out',
   confirmationSuccessUrl: window.location.href,

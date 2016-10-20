@@ -1,14 +1,36 @@
+<md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools" style="background-color: #5b041c;">
+            <md-button class="md-icon-button" aria-label="Settings" ng-click="movieView.back()">
+                <md-icon>arrow_back</md-icon>
+            </md-button>
+            <span flex></span>
+            <span flex="20">&nbsp;</span>
+            <div layout="column">
+                <span>&nbsp;</span>
+                <md-button class="md-icon-button" aria-label="More">
+                    <md-icon>menu</md-icon>
+                </md-button>
+            </div>
+        </div>
+    </md-toolbar>
+ 
 <div id="black-background" layout="column" flex="100">
 <mdb-backdrop layout-fill path="movieView.movie.backdrop_path" ng-if="movieView.movie.backdrop_path"></mdb-backdrop>
 <div>
-<div class="row no-margin" layout="column" flex flex-xs="100" layout-align="none center" layout-fill layout-padding>
+  <div layout="row" layout-fill layout-align="center">
+<div class="row no-margin" layout="column" flex-gt-md="65" flex-md="95" flex-xs="100" layout-align="none center" layout-fill layout-padding>
   <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" >
     <div flex class="row">
-      <h1 class="page-header">{{movieView.movie.title}}
+      <h1 class="page-header hide-xs">{{movieView.movie.title}}
         <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
         <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
       </h1>
+      <h3 class="page-header hide-gt-xs">{{movieView.movie.title}}
+        <em class="small" ng-show="movieView.movie.release_date">({{movieView.movie.release_date | date:'yyyy'}})</em>
+        <em class="small" ng-show="!movieView.movie.release_date && movieView.movie.status">({{movieView.movie.status}})</em>
+        <span ng-show="movieView.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
+      </h3>
     </div>
 
 
@@ -22,15 +44,16 @@
     </div>
   </div> -->
 
-  <div class="row">
-    <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+  <div layout="row">
+    <div class="hidden-xs">
       <div class="movie-poster">
         <img ng-if="movieView.movie.poster_path" class="media-object" width="400" lazy-img="http://image.tmdb.org/t/p/w300{{movieView.movie.poster_path}}" alt="{{movieView.movie.title}}">
 
         <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{movieView.movie.title}}" alt="{{movieView.movie.title}}" ng-if="!movieView.movie.poster_path && movieView.movie.title">
       </div>
     </div>
-    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+    <span class="hidden-xs" layout-padding>&nbsp;</span>
+    <div  flex>
       <div class="row">
         <div class="col-sm-12">
           <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieView.movie.genres" style="display:inline-block; margin:0 5px 10px 0;">
@@ -61,8 +84,8 @@
 
       <span>&nbsp;</span>
 
-      <div class="row">
-        <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
+      <div layout="column">
+        <div layout="column" layout-fill>
           <p ng-show="movieView.movie.tagline" class="text-upper text-bold text-xl">{{movieView.movie.tagline}}</p>
           <p ng-show="movieView.movie.overview" style="font-size: 1.1em;">{{movieView.movie.overview}}</p>
           <em ng-hide="movieView.movie.overview">No movie synopsis available</em>
@@ -70,7 +93,7 @@
       </div>
 
 
-      <div class="row" layout="column">
+      <div class="row">
         <div>
           <hr>
           <div layout="row">
@@ -95,10 +118,18 @@
           <md-button ng-hide="true" class="md-icon-button  md-accent"><md-icon>favorite</md-icon><md-tooltip>Remove form favorites</md-tooltip></md-button>
           <md-button ng-click="movieView.watchTrailer = !movieView.watchTrailer " ng-show="!movieView.watchTrailer" class=" md-icon-button md-accent"><md-icon>play_arrow</md-icon><md-tooltip>Watch Trailer</md-tooltip></md-button>
         </div>
-        <div ng-if="movieView.watchTrailer" layout="row">
-          <youtube-video video-id="movieView.movie.videos[0].key"></youtube-video>
+        <div ng-if="movieView.watchTrailer" layout="column" layout-fill>
+          <div layout="row" class="auto-margin">
+          <youtube-video dir-paginate="video in movieView.movie.videos | itemsPerPage: 1"  video-id="video.key"></youtube-video>
           <md-button ng-click="movieView.watchTrailer = !movieView.watchTrailer" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
+          </div>
+            <div layout="column"  class="auto-margin">
+              
+          <dir-pagination-controls auto-hide="false" layout-fill boundary-links="true" template-url="../bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+      
         </div>
+        </div>
+        
       </div>
     </div>
 
@@ -108,7 +139,7 @@
   </div>
   <div class="row">
     <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in movieView.movie.cast | limitTo : 8">
-      <div class="media">
+      <div class="media" layout-xs="column">
         <div class="pull-left">
 
             <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
@@ -126,6 +157,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>
