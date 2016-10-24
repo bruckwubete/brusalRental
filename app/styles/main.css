@@ -4,6 +4,9 @@
 .auto-margin{
   margin: auto;
 }
+.sidenav-button{
+  height: 50px;
+}
 .kit-accent-button{
   color: #ff4081 !important;
 }

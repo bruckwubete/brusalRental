@@ -49,12 +49,12 @@
         <md-grid-list md-cols-gt-md="12" md-cols="3" md-cols-md="8" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
             <md-grid-tile dir-paginate="movie in movies.moviesToShow.results | itemsPerPage: 20" current-page="movies.moviesToShow.page" total-items="movies.moviesToShow.total_results" md-colspan-xl="3" md-rowspan-xl="4" md-colspan-lg="3" md-rowspan-lg="4" md-colspan-md="2" md-rowspan-md="3" md-colspan-sm="1" md-rowspan-sm="2" md-colspan-xs="1"
                 md-rowspan-xs="2">
-                <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="movie poster image" layout-fill>
+                <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="{{movie.title}}" layout-fill>
                 <span>&nbsp;</span>
             </md-grid-tile>
         </md-grid-list>
         <div layout="row" layout-align="center center">
-            <span flex="70">&nbsp;</span>
+            <span flex="65">&nbsp;</span>
             <dir-pagination-controls auto-hide="false" layout-fill boundary-links="true" on-page-change="movies.loadPage(newPageNumber, oldPageNumber)" template-url="../bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
         </div>
     </md-content>

@@ -25,16 +25,23 @@ angular.module('dvdRentalFrontendApp')
         activate();
 
         function activate(){
-                vm.formBusy = true;
-                vm.moviesToShow = vm.popularMovies = MovieService.discover();
-                vm.genres = MovieService.allGenres();
-                vm.formBusy = false;
+            vm.formBusy = true;
+            vm.popularMovies = MovieService.discover();
+            if(!$state.params.moviesToShow){
+                vm.moviesToShow = vm.popularMovies;
+            }else{
+                vm.moviesToShow = $state.params.moviesToShow;
+                vm.searchInput = vm.moviesToShow.searchInput;
+            }
+            vm.genres = MovieService.allGenres();
+            vm.formBusy = false;
 
         }
         
 
         function loadMovieView(id){
-            $state.go('app.movieView', {id : id});
+            vm.moviesToShow.searchInput = vm.searchInput;
+            $state.go('app.movieView', {id : id, moviesToShow : vm.moviesToShow});
         }
         
         function calculateLimit(){
@@ -45,16 +52,15 @@ angular.module('dvdRentalFrontendApp')
         }
 
         function search(title){
-            if(title){
+        if(title){
             MovieService.search({title: title}, function(resp){
                vm.moviesToShow = resp;
             }, function(httpError){
                 console.log(httpError);
-                FeedbackService.showSuccess("Welcome " + resp.email)
+                FeedbackService.showError(httpError.status + ": " +httpError.statusText);
                 vm.moviesToShow = vm.popularMovies;
             });
         }else{
-            console.log(title);
             vm.moviesToShow = vm.popularMovies;
         }
         }
@@ -66,7 +72,6 @@ angular.module('dvdRentalFrontendApp')
         
         function getMoviesByGenre(id){
             MovieService.discover({with_genres: id}, function(resp){
-                console.log(resp);
                 vm.moviesToShow = resp;
             }, function(httpError){
                 console.log(httpError);
@@ -76,7 +81,6 @@ angular.module('dvdRentalFrontendApp')
         
         function loadPage(newPage, oldPage){
             MovieService.discover({page: newPage}, function(resp){
-                console.log(resp);
                 vm.moviesToShow = resp;
             }, function(httpError){
                 console.log(httpError);

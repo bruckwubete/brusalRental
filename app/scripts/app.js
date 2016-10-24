@@ -31,7 +31,6 @@ angular
             apiUrl: 'http://angularmaterial-bruck.c9users.io/api/v1',
             tokenValidationPath: '/auth/validate_token',
              signOutUrl: '/auth/sign_out',
-  confirmationSuccessUrl: window.location.href,
   emailSignInPath: '/auth/sign_in',
   storage: 'cookies',
   tokenFormat: {

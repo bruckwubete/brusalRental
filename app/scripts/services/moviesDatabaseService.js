@@ -37,7 +37,7 @@ angular.module('dvdRentalFrontendApp')
         });
     })
     .factory('ShowService',function($resource){
-        return $resource('/api/v1/shows/popular', { id: '@_id'}, {
+        return $resource('/api/v1/shows/popular', { id: '@_id', title: '@_title', with_genres: '@_with_genres', page: '@_page'}, {
           'get': {
                    url: 'api/v1/shows/details/:id',
                    method: 'GET',
@@ -46,6 +46,21 @@ angular.module('dvdRentalFrontendApp')
                     url: 'api/v1/shows/popular',
                     method: 'GET',
                     isArray : true
+          },
+          search: {
+                 url: 'api/v1/shows/search/:title',
+                 method: 'GET'
+          },
+          allGenres: {
+                url: 'api/v1/shows/genres',
+                method: 'GET',
+                isArray: true
+          },
+          discover: {
+              url: 'api/v1/shows/discover',
+              with_genres: ':with_genres',
+              page: ':page',
+              method: 'GET'
           }
         });
     })

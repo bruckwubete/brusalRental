@@ -23,7 +23,7 @@ angular.module('dvdRentalFrontendApp')
         }
 
         function submitRegistration(){
-          $auth.submitLogin(vm.registrationForm)
+          $auth.submitRegistration(vm.registrationForm)
         .then(function(resp) {
           // handle success response
           FeedbackService.showSuccess("Welcome " + resp.email);

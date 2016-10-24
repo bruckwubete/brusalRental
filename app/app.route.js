@@ -51,6 +51,7 @@
             url : '/movies',
             templateUrl: 'views/movies.html',
             controller: 'MoviesCtrl',
+            params: {moviesToShow : null},
             controllerAs: 'movies',
             data : {
                 showSideNav : true
@@ -79,6 +80,7 @@
             templateUrl: 'views/movieview.html',
             controller: 'MovieviewCtrl',
             controllerAs: 'movieView',
+            params: {moviesToShow : null},
             data : {
                 showHeaderSlideshow : true,
                 showSideNav : false

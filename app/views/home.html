@@ -10,11 +10,24 @@
       <md-toolbar>
         <h1 class="md-toolbar-tools" style="background-color: #5b041c;">Menu</h1>
       </md-toolbar>
-      <md-content layout-padding layout-fill class="no-overflow">
-        <p show-gt-md>
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
-        </p>
+      <md-content layout-padding class="no-overflow" layout-fill>
+        <md-list layout-fill>
+          <md-list-item>
+        <md-button layout-fill class="sidenav-button" ui-sref="app.movies" ng-click="appCtrl.toggleSidenav()">
+          movies
+        </md-button>
+        </md-list-item>
+        <md-list-item>
+        <md-button layout-fill class="sidenav-button" ui-sref="app.shows" ng-click="appCtrl.toggleSidenav()">
+          shows
+        </md-button>
+        </md-list-item>
+        <md-list-item>
+        <md-button layout-fill class="sidenav-button" ui-sref="app.people" ng-click="appCtrl.toggleSidenav()">
+          People
+        </md-button>
+        </md-list-item>
+        </md-list>
       </md-content>
 
     </md-sidenav>
