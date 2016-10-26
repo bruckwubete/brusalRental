@@ -19,7 +19,7 @@
                 <span>Movies</span>
             </h2>
             <span flex></span>
-            <div layout="column" flex="55">
+            <div layout="column" flex="45">
                 <span>&nbsp;</span>
                 <md-input-container class="md-accent no-margin" flex="100">
                     <md-icon class="material-icons">&#xE8B6;</md-icon>
@@ -27,21 +27,29 @@
                     <input style="color:white" ng-model="movies.searchInput" ng-change="movies.search(movies.searchInput)">
                 </md-input-container>
             </div>
-            <span flex="20">&nbsp;</span>
-            <div layout="column">
-                <span>&nbsp;</span>
-                <md-menu>
-      <md-button aria-label="Open Genre menu" class="md-icon-button" ng-click="movies.openMenu($mdOpenMenu, $event)">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <md-menu-content width="4">
-        <md-menu-item ng-repeat="genre in movies.genres">
-          <md-button ng-click="movies.getMoviesByGenre(genre.id)">
-            {{genre.name}}
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
+            <span flex="5">&nbsp;</span>
+            <div layout="row" flex="15">
+                <div layout="column" layout-fill>
+                <md-input-container class="md-block genre-select" layout-fill>
+                    <label style="color:white">Genre</label>
+                    <md-select ng-model="movies.selectedGenres" ng-change="movies.getMoviesByGenre()" multiple  style="color:white">
+                        <md-option ng-value="genre.id" ng-repeat="genre in movies.genres">{{genre.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                </div>
+            </div>
+            
+            <div layout="row" flex="5">
+                <div layout="column" layout-fill>
+                <md-input-container class="md-block genre-select" layout-fill>
+                    <label style="color:white">Year</label>
+                    <md-select ng-model="movies.selectedYear" ng-change="movies.getMoviesByGenre()" style="color:white">
+                        <md-option ng-value="year" ng-repeat="year in movies.years">{{year}}</md-option>
+                    </md-select>
+                </md-input-container>
+                </div>
+            </div>
+
             </div>
         </div>
     </md-toolbar>

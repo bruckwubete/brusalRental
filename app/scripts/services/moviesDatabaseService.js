@@ -9,7 +9,7 @@
  */
 angular.module('dvdRentalFrontendApp')
     .factory('MovieService', function($resource,$http) {
-        return $resource('/api/v1/movies/popular', { id: '@_id', title: '@_title', with_genres: '@_with_genres', page: '@_page' }, {
+        return $resource('/api/v1/movies/popular', { id: '@_id', title: '@_title', with_genres: '@_with_genres', page: '@_page', year: '@_year' }, {
           'get': {
                    url: 'api/v1/movies/details/:id',
                    method: 'GET',
@@ -32,12 +32,13 @@ angular.module('dvdRentalFrontendApp')
               url: 'api/v1/movies/discover',
               with_genres: ':with_genres',
               page: ':page',
+              page: ':year',
               method: 'GET'
           }
         });
     })
     .factory('ShowService',function($resource){
-        return $resource('/api/v1/shows/popular', { id: '@_id', title: '@_title', with_genres: '@_with_genres', page: '@_page'}, {
+        return $resource('/api/v1/shows/popular', { id: '@_id', title: '@_title', with_genres: '@_with_genres', page: '@_page', first_air_date_year: '@_first_air_date_year'}, {
           'get': {
                    url: 'api/v1/shows/details/:id',
                    method: 'GET',
@@ -60,6 +61,7 @@ angular.module('dvdRentalFrontendApp')
               url: 'api/v1/shows/discover',
               with_genres: ':with_genres',
               page: ':page',
+              first_air_date_year: ':first_air_date_year',
               method: 'GET'
           }
         });

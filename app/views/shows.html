@@ -26,21 +26,28 @@
                     <input style="color:white" ng-model="shows.searchInput" ng-change="shows.search(shows.searchInput)">
                 </md-input-container>
             </div>
-            <span flex="20">&nbsp;</span>
-            <div layout="column">
-                <span>&nbsp;</span>
-                <md-menu>
-      <md-button aria-label="Open Genre menu" class="md-icon-button" ng-click="shows.openMenu($mdOpenMenu, $event)">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <md-menu-content width="4">
-        <md-menu-item ng-repeat="genre in shows.genres">
-          <md-button ng-click="shows.getShowsByGenre(genre.id)">
-            {{genre.name}}
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
+            <span flex="5">&nbsp;</span>
+            <div layout="row" flex="15">
+                <div layout="column" layout-fill>
+                <md-input-container class="md-block genre-select" layout-fill>
+                    <label style="color:white">Genre</label>
+                    <md-select ng-model="shows.selectedGenres" ng-change="shows.getShowsByGenre()" multiple  style="color:white">
+                        <md-option ng-value="genre.id" ng-repeat="genre in shows.genres">{{genre.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                </div>
+            </div>
+            
+            <div layout="row" flex="5">
+                <div layout="column" layout-fill>
+                <md-input-container class="md-block genre-select" layout-fill>
+                    <label style="color:white">Year</label>
+                    <md-select ng-model="shows.selectedYear" ng-change="shows.getShowsByGenre()" style="color:white">
+                        <md-option ng-value="year" ng-repeat="year in shows.years">{{year}}</md-option>
+                    </md-select>
+                </md-input-container>
+                </div>
+            </div>
             </div>
         </div>
     </md-toolbar>
