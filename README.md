@@ -1,4 +1,5 @@
-# dvd-rental-frontend https://travis-ci.org/bruckwubete/kickit.online.front.svg?branch=master
+# dvd-rental-frontend 
+https://travis-ci.org/bruckwubete/kickit.online.front.svg?branch=master
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.15.1.
