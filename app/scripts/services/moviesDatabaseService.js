@@ -65,15 +65,19 @@ angular.module('dvdRentalFrontendApp')
         });
     })
     .factory('PeopleService',function($resource){
-      return $resource('/api/v1/people/popular', { id: '@_id'}, {
+      return $resource('/api/v1/people/popular', { id: '@_id', title: '@_title', page: '@_page'}, {
         'get': {
                  url: 'api/v1/people/details/:id',
                  method: 'GET',
               },
         queryAll: {
                   url: 'api/v1/people/popular',
-                  method: 'GET',
-                  isArray : true
-        }
+                  page: ':page',
+                  method: 'GET'
+        },
+        search: {
+                 url: 'api/v1/people/search/:title',
+                 method: 'GET'
+          }
       });
     });

@@ -60,6 +60,7 @@
           .state('app.shows', {
             url : '/shows',
             templateUrl: 'views/shows.html',
+            params: {showsToShow : null},
             controller: 'ShowsCtrl',
             controllerAs: 'shows',
             data : {
@@ -69,6 +70,7 @@
           .state('app.people', {
             url : '/people',
             templateUrl: 'views/people.html',
+            params: {peopleToShow : null},
             controller: 'PeopleCtrl',
             controllerAs: 'people',
             data : {
@@ -89,6 +91,7 @@
           .state('app.showView', {
             url : '/showView/:id/',
             templateUrl: 'views/showview.html',
+            params: {showsToShow : null},
             controller: 'ShowviewCtrl',
             controllerAs: 'showView',
             data : {
@@ -99,6 +102,7 @@
           .state('app.personView', {
             url : '/personView/:id/',
             templateUrl: '/views/personview.html',
+            params: {peopleToShow : null},
             controller: 'PersonviewCtrl',
             controllerAs: 'personView',
             data : {

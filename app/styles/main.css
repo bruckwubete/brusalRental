@@ -1,3 +1,23 @@
+.login-header{
+  width:103% !important;
+  position: relative !important;
+  left: -9px;
+  top: -8px !important;
+}
+
+.signup-button{
+  width: 79px !important;
+  height: 79px !important;
+  background-color: rgb(197,17,98) !important;
+  position: relative;
+  top: 2pc;
+}
+
+.login-icon{
+  width: 52px;
+  height: 56px;
+}
+
 .kit-list-content{
   padding-top: 0;
 }

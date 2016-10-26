@@ -18,14 +18,20 @@
 <div id="black-background" layout="column" flex="100">
 <mdb-backdrop layout-fill path="showView.show.backdrop_path" ng-if="showView.show.backdrop_path"></mdb-backdrop>
 <div>
-<div class="row no-margin" layout="column" flex flex-xs="100" layout-align="none center" layout-fill layout-padding>
+<div layout="row" layout-fill layout-align="center">
+<div class="row no-margin" layout="column" flex-gt-md="65" flex-md="95" flex-xs="100" layout-align="none center" layout-fill layout-padding>
   <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" >
     <div flex class="row">
-      <h1 class="page-header">{{showView.show.name}}
+      <h1 class="page-header hide-xs">{{showView.show.name}}
         <em class="small" ng-show="showView.show.release_date">({{showView.show.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!showView.show.release_date && showView.show.status">({{showView.show.status}})</em>
         <span ng-show="showView.show.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
       </h1>
+      <h3 class="page-header hide-gt-xs">{{showView.show.name}}
+        <em class="small" ng-show="showView.show.release_date">({{showView.show.release_date | date:'yyyy'}})</em>
+        <em class="small" ng-show="!showView.show.release_date && showView.show.status">({{showView.show.status}})</em>
+        <span ng-show="showView.show.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
+      </h3>
     </div>
 
 
@@ -110,9 +116,16 @@
           <md-button ng-hide="true" class="md-icon-button  md-accent"><md-icon>favorite</md-icon><md-tooltip>Remove form favorites</md-tooltip></md-button>
           <md-button ng-click="showView.watchTrailer = !showView.watchTrailer " ng-show="!showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>play_arrow</md-icon><md-tooltip>Watch Trailer</md-tooltip></md-button>
         </div>
-        <div ng-show="showView.watchTrailer" layout="row">
-          <youtube-video video-id="showView.show.videos[0].key"></youtube-video>
+        <div ng-if="showView.watchTrailer" layout="column" layout-fill>
+          <div layout="row" class="auto-margin">
+          <youtube-video dir-paginate="video in showView.show.videos | itemsPerPage: 1"  video-id="video.key"></youtube-video>
           <md-button ng-click="showView.watchTrailer = !showView.watchTrailer" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
+          </div>
+            <div layout="column"  class="auto-margin">
+              
+          <dir-pagination-controls auto-hide="false" layout-fill boundary-links="true" template-url="../bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+      
+        </div>
         </div>
 
         <div class="torrentsTime" >

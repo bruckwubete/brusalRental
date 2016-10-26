@@ -29,7 +29,7 @@ angular.module('dvdRentalFrontendApp')
             if(!$state.params.showsToShow){
                 vm.showsToShow = vm.popularTvShows;
             }else{
-                vm.shosTos = $state.params.showsToShow;
+                vm.showsToShow = $state.params.showsToShow;
                 vm.searchInput = vm.showsToShow.searchInput;
             }
             vm.genres = ShowService.allGenres();
@@ -60,7 +60,7 @@ angular.module('dvdRentalFrontendApp')
                 vm.showsToShow = vm.popularMovies;
             });
         }else{
-            vm.showsToShow = vm.popularMovies;
+            vm.showsToShow = vm.popularTvShows;
         }
         }
         

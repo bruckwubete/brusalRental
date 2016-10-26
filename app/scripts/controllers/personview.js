@@ -12,6 +12,7 @@ angular.module('dvdRentalFrontendApp')
     var vm = this;
     vm.loadMovieView = loadMovieView;
     vm.loadShowView = loadShowView;
+    vm.back = back;
     vm.person = {};
     activate();
     function activate(){
@@ -19,9 +20,12 @@ angular.module('dvdRentalFrontendApp')
     }
 
     function loadShowView(id){
-      $state.go('showView', {id : id});
+      $state.go('app.showView', {id : id});
     }
     function loadMovieView(id){
-      $state.go('movieView', {id : id});
+      $state.go('app.movieView', {id : id});
+    }
+    function back(){
+          $state.go('app.people', {peopleToShow : $state.params.peopleToShow})
     }
   });

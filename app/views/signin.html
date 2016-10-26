@@ -6,15 +6,39 @@
         <h3 style="color:white">Kickit Online</h3>
 </div>
 <div layout="row" layout-align="center start" class="login-form">
-<md-card flex="35" layout-padding class="md-whiteframe-4dp">
-<form name="logIn" ng-submit="signinCtrl.submitRegistration(registrationForm)" ng-init="signinCtrl.registrationForm = {}" novalidate>
+<md-card flex-xl="35" flex-lg="40" flex-md="45" flex-sm="50" flex-xs="65" layout-padding class="md-whiteframe-4dp">
+  <md-toolbar class="md-hue-2 login-header" style="background-color: #5b041c;">
+      <div class="md-toolbar-tools">
+
+        <h2 ng-if="!signinCtrl.signUpClicked">
+          <span>Sign in</span>
+        </h2>
+        
+        <h2 ng-if="signinCtrl.signUpClicked">
+          <span>Sign Up</span>
+        </h2>
+        <span flex></span>
+         <md-button  ng-if="!signinCtrl.signUpClicked" class="md-fab md-accent signup-button" aria-label="Sign Up" ng-click="signinCtrl.signUpClicked = !signinCtrl.signUpClicked">
+          <md-icon>person_add</md-icon>
+          <md-tooltip>Sign Up</md-tooltip>
+        </md-button>
+        <md-button  ng-if="signinCtrl.signUpClicked" class="md-fab md-accent signup-button" aria-label="Sign In" ng-click="signinCtrl.signUpClicked = !signinCtrl.signUpClicked">
+          <md-icon>backspace</md-icon>
+          <md-tooltip>Back to Sign In</md-tooltip>
+        </md-button>
+      </div>
+    </md-toolbar>
+<form name="logIn" ng-submit="signinCtrl.submitLogin(registrationForm)" ng-init="signinCtrl.registrationForm = {}" novalidate ng-if="!signinCtrl.signUpClicked">
   <md-card-content layout="column">
-    <div layout="row">
+    <div>
+    <p style="color:black;"><b>Sign in with</b></p>
+    </div>
+    <div layout="row" layout-align="center">
          <md-button 
                  title="Launch Google.com in new window"
                  ng-click="signinCtrl.omniauthLogin('facebook')"
                  aria-label="login with facebook"
-                 class="icon " >
+                 class="icon login-icon" >
         <img src="../images/facebook-icon.png" alt="facebook-icon" aria-label="facebook icon" layout-fill/>
         <md-tooltip>Facebook</md-tooltip>
       </md-button>
@@ -22,15 +46,15 @@
                  title="Launch Google.com in new window"
                  ng-click="signinCtrl.omniauthLogin('twitter')"
                  aria-label="login with twitter"
-                 class="icon" >
-        <img src="../images/twitter-icon.png" alt="twitter-icon" aria-label="twitter icon" layout-fill/>
+                 class="icon login-icon" >
+        <img  src="../images/twitter-icon.png" alt="twitter-icon" aria-label="twitter icon" layout-fill/>
         <md-tooltip>Twitter</md-tooltip>
       </md-button>
       <md-button 
                  title="Launch Google.com in new window"
                  ng-click="signinCtrl.omniauthLogin('google')"
                  aria-label="login with google"
-                 class="icon" >
+                 class="icon login-icon" >
         <img src="../images/google-mail-icon.png" alt="google-mail-icon" aria-label="google mail icon" layout-fill/>
         <md-tooltip>Google Mail</md-tooltip>
       </md-button>
@@ -38,10 +62,14 @@
                  title="Launch Google.com in new window"
                  ng-click="signinCtrl.omniauthLogin('github')"
                  aria-label="login with github"
-                 class="icon" >
+                 class="icon login-icon" >
         <img src="../images/github-icon.png" alt="github-icon" aria-label="github icon" layout-fill/>
         <md-tooltip>Github</md-tooltip>
       </md-button>
+      </div>
+      <div layout="column" layout-align="none center">
+      <br>
+      <p style="color:black;"><b>------------------------------------------------------------------------------------------------------------------------</b></p>
       </div>
   <md-input-container>
     <label for="email">Email</label>
@@ -54,6 +82,36 @@
   </md-card-content>
   <md-card-actions layout="row" layout-align="center">
       <md-button type="submit" class="md-primary" aria-label="login">Login</md-button>
+  </md-card-actions>
+</form>
+<form name="logIn" ng-submit="signinCtrl.submitRegistration(registrationForm)" ng-init="signinCtrl.registrationForm = {}" novalidate ng-if="signinCtrl.signUpClicked">
+  <md-card-content layout="column">
+    <div>
+    <p style="color:black;"><b>Sign Up for Kickit.online</b></p>
+    </div>
+    <md-input-container>
+    <label for="email">Name</label>
+    <input aria-label="name" type="text" name="nickname" ng-model="signinCtrl.registrationForm.name" required="required"/>
+  </md-input-container>
+  <md-input-container>
+    <label for="email">Nick Name</label>
+    <input aria-label="nickname" type="text" name="nickname" ng-model="signinCtrl.registrationForm.nickname"/>
+  </md-input-container>
+  <md-input-container>
+    <label for="email">Email</label>
+    <input aria-label="email" type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>
+  </md-input-container>
+  <md-input-container>
+    <input aria-label="password" type="password" name="password" ng-model="signinCtrl.registrationForm.password" required="required"/>
+    <label>Password</label>
+  </md-input-container>
+    <md-input-container>
+    <input aria-label="password" type="password" name="passwordConfirm" ng-model="signinCtrl.registrationForm.confirm_password" required="required"/>
+    <label>Confirm Password</label>
+  </md-input-container>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="center">
+      <md-button type="submit" class="md-primary" aria-label="login">Sign Up</md-button>
   </md-card-actions>
 </form>
 </md-card>

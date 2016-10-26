@@ -46,6 +46,17 @@ angular
         twitter:   '/auth/twitter',
         google:   '/auth/google_oauth2'
       },
-  omniauthWindowType : 'newWindow'
+  omniauthWindowType : 'newWindow',
+        handleLoginResponse: function(response) {
+        return response;
+      },
+
+      handleAccountUpdateResponse: function(response) {
+        return response;
+      },
+
+      handleTokenValidationResponse: function(response) {
+        return response;
+      }
         });
     });

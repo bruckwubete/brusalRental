@@ -12,6 +12,7 @@ angular.module('dvdRentalFrontendApp')
     .controller('SigninController', function ($state, $auth, FeedbackService) {
         var vm = this;
         vm.submitRegistration = submitRegistration;
+        vm.submitLogin = submitLogin;
         vm.omniauthLogin = omniauthLogin;
 
 
@@ -22,18 +23,18 @@ angular.module('dvdRentalFrontendApp')
 
         }
 
-        function submitRegistration(){
-          $auth.submitRegistration(vm.registrationForm)
-        .then(function(resp) {
-          // handle success response
-          FeedbackService.showSuccess("Welcome " + resp.email);
-          $state.go('app.movies', {user : resp}, {reload : true});
-        })
-        .catch(function(resp) {
-          // handle error response
-          FeedbackService.showSuccess(resp.reason.toUpperCase() +": " + resp.errors[0]);
-          console.log(resp);
-        });
+        function submitLogin(){
+          $auth.submitLogin(vm.registrationForm)
+              .then(function(resp) {
+                   // handle success response
+                   FeedbackService.showSuccess("Welcome " + resp.data.name)
+
+                   $state.go('app.movies', {user : resp}, {reload : true});
+              }, function(resp) {
+                  // handle error response
+                  console.log(resp)
+                  FeedbackService.showError(resp.reason.toUpperCase() +": " + resp.errors[0]);
+              });
         };
         
         function omniauthLogin(appName){
@@ -41,11 +42,28 @@ angular.module('dvdRentalFrontendApp')
             
           }).then(function(resp){
           	console.log(resp);
-             FeedbackService.showSuccess("Welcome " + resp.email);
+            
+             FeedbackService.showSuccess("Welcome " + resp.name)
+            
              $state.go('app.movies', {user : resp}, {reload:true});
           }).catch(function(resp){
           });
         }
+        
+       function submitRegistration(){
+          $auth.submitRegistration(vm.registrationForm)
+              .then(function(resp) {
+                   // handle success response
+                   console.log(resp);
+                   FeedbackService.showSuccess("SUCCESS! Please Verify your email address to continue")
+                   
+                   $state.go('signIn', {user : resp}, {reload : true});
+              }, function(resp) {
+                  // handle error response
+                  console.log(resp)
+                  FeedbackService.showError(resp.statusText.toUpperCase() +": " + resp.data.errors.full_messages[0]);
+              });
+        };
         
     });
 })()

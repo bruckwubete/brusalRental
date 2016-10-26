@@ -1,15 +1,37 @@
+<md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools" style="background-color: #5b041c;">
+            <md-button class="md-icon-button" aria-label="Settings" ng-click="personView.back()">
+                <md-icon>arrow_back</md-icon>
+            </md-button>
+            <span>back</span>
+            <span flex></span>
+            <span flex="20">&nbsp;</span>
+            <div layout="column">
+                <span>&nbsp;</span>
+                <md-button class="md-icon-button" aria-label="More">
+                    <md-icon>menu</md-icon>
+                </md-button>
+            </div>
+        </div>
+</md-toolbar>
 
 <div id="black-background" flex="100">
 
 
-<div class="row no-margin" layout="column" flex flex-xs="100" layout-align="none center" layout-fill layout-padding>
-<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-    <div flex class="row">
-      <h1 class="page-header">{{personView.person.name}}
+<div layout="row" layout-fill layout-align="center">
+<div class="row no-margin" layout="column" flex-gt-md="65" flex-md="95" flex-xs="100" layout-align="none center" layout-fill layout-padding>
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" >
+        <div flex class="row">
+      <h1 class="page-header hide-xs">{{personView.person.name}}
         <em class="small" ng-show="personView.person.release_date">({{personView.person.release_date | date:'yyyy'}})</em>
         <em class="small" ng-show="!personView.person.release_date && personView.person.status">({{personView.person.status}})</em>
-        <span ng-show="personView.person.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
+        <span ng-show="showView.show.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
       </h1>
+      <h3 class="page-header hide-gt-xs">{{showView.show.name}}
+        <em class="small" ng-show="personView.person.release_date">({{personView.person.release_date | date:'yyyy'}})</em>
+        <em class="small" ng-show="!personView.person.release_date && personView.person.status">({{personView.person.status}})</em>
+        <span ng-show="personView.person.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:red"></span>
+      </h3>
     </div>
 
 
@@ -44,10 +66,10 @@
 
       <!-- torrents -->
       <div style="bottom-margin:100px" class="md-button">
-        <jk-rating-stars max-rating="10" rating="personView.person.popularity-20" read-only="true">
+        <jk-rating-stars max-rating="10" rating="personView.person.popularity/4" read-only="true">
 
           </jk-rating-stars>
-          <md-tooltip>{{personView.person.popularity}}/30 popularity</md-tooltip>
+          <md-tooltip>{{personView.person.popularity}}/50 popularity</md-tooltip>
       </div>
       <!-- end -->
 
@@ -129,6 +151,7 @@
   </div>
 </div>
   </div>
+</div>
 </div>
 </div>
 </div>
