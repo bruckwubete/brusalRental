@@ -2,7 +2,7 @@
   <div >
       <img width="100%" height="600" src="../images/backgroundPic.jpg">
     </div>
-    <div layout="row" layout-align="center start" class="login-header">
+    <div layout="row" layout-align="center start" class="login-header-text">
         <h3 style="color:white">Kickit Online</h3>
 </div>
 <div layout="row" layout-align="center start" class="login-form">
@@ -67,10 +67,9 @@
         <md-tooltip>Github</md-tooltip>
       </md-button>
       </div>
-      <div layout="column" layout-align="none center">
-      <br>
-      <p style="color:black;"><b>------------------------------------------------------------------------------------------------------------------------</b></p>
-      </div>
+      <span>&nbsp;</span>
+      <md-divider></md-divider>
+      <span>&nbsp;</span>
   <md-input-container>
     <label for="email">Email</label>
     <input aria-label="email" type="email" name="email" ng-model="signinCtrl.registrationForm.email" required="required"/>
@@ -86,9 +85,6 @@
 </form>
 <form name="logIn" ng-submit="signinCtrl.submitRegistration(registrationForm)" ng-init="signinCtrl.registrationForm = {}" novalidate ng-if="signinCtrl.signUpClicked">
   <md-card-content layout="column">
-    <div>
-    <p style="color:black;"><b>Sign Up for Kickit.online</b></p>
-    </div>
     <md-input-container>
     <label for="email">Name</label>
     <input aria-label="name" type="text" name="nickname" ng-model="signinCtrl.registrationForm.name" required="required"/>

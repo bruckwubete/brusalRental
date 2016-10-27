@@ -19,7 +19,7 @@
                 <span>Movies</span>
             </h2>
             <span flex></span>
-            <div layout="column" flex="45">
+            <div layout="column" flex="25">
                 <span>&nbsp;</span>
                 <md-input-container class="md-accent no-margin" flex="100">
                     <md-icon class="material-icons">&#xE8B6;</md-icon>
@@ -28,7 +28,7 @@
                 </md-input-container>
             </div>
             <span flex="5">&nbsp;</span>
-            <div layout="row" flex="15">
+            <div layout="row" flex="20">
                 <div layout="column" layout-fill>
                 <md-input-container class="md-block genre-select" layout-fill>
                     <label style="color:white">Genre</label>
@@ -38,8 +38,8 @@
                 </md-input-container>
                 </div>
             </div>
-            
-            <div layout="row" flex="5">
+            <span flex="5">&nbsp;</span>
+            <div layout="row" flex="10">
                 <div layout="column" layout-fill>
                 <md-input-container class="md-block genre-select" layout-fill>
                     <label style="color:white">Year</label>
@@ -55,7 +55,7 @@
     </md-toolbar>
     <md-content layout-padding class="kit-list-content">
         <md-grid-list md-cols-gt-md="12" md-cols="3" md-cols-md="8" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
-            <md-grid-tile dir-paginate="movie in movies.moviesToShow.results | itemsPerPage: 20" current-page="movies.moviesToShow.page" total-items="movies.moviesToShow.total_results" md-colspan-xl="3" md-rowspan-xl="4" md-colspan-lg="3" md-rowspan-lg="4" md-colspan-md="2" md-rowspan-md="3" md-colspan-sm="1" md-rowspan-sm="2" md-colspan-xs="1"
+            <md-grid-tile dir-paginate="movie in movies.moviesToShow.results | itemsPerPage: 20" current-page="movies.moviesToShow.page" total-items="20000" md-colspan-xl="3" md-rowspan-xl="4" md-colspan-lg="3" md-rowspan-lg="4" md-colspan-md="2" md-rowspan-md="3" md-colspan-sm="1" md-rowspan-sm="2" md-colspan-xs="1"
                 md-rowspan-xs="2">
                 <img ng-click="movies.loadMovieView(movie.id)" ng-src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="{{movie.title}}" layout-fill>
                 <span>&nbsp;</span>
