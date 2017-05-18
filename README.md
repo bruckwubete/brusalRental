@@ -13,7 +13,7 @@ This Project has two parts
     
 ## DEMO
 
-wanna see how awsome this application is? [check it out](http://kickit.online).
+wanna see how awsome this application is? [check it out](http://angularmaterial-bruck.c9users.io/).
     
 
 ## Installation
