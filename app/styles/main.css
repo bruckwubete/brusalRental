@@ -165,10 +165,13 @@ p, em, h1, h2, h3, h4 {
   .jumbotron {
     border-bottom: 0;
   }
+  .demo-layout-transparent {
+    height: 500px;
+  }
 }
 
 .demo-layout-transparent {
-  background: url("../images/backgroundPic.jpg") center/cover;
+  background: url("../images/backgroundPic-min.jpg") center/cover;
 }
 
 .demo-layout-transparent .mdl-layout__header,
@@ -214,4 +217,10 @@ p, em, h1, h2, h3, h4 {
 
 .movie-poster img {
   width: 100%;
+}
+
+
+
+.nonDraggableImage{
+    -webkit-user-drag: none;
 }

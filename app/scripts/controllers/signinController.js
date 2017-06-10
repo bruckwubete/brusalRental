@@ -41,12 +41,12 @@ angular.module('dvdRentalFrontendApp')
           $auth.authenticate(appName, {
             
           }).then(function(resp){
-          	console.log(resp);
-            
+
              FeedbackService.showSuccess("Welcome " + resp.name)
             
              $state.go('app.movies', {user : resp}, {reload:true});
           }).catch(function(resp){
+              console.log("in" + appName + " error funciton");
           });
         }
         
@@ -54,9 +54,9 @@ angular.module('dvdRentalFrontendApp')
           $auth.submitRegistration(vm.registrationForm)
               .then(function(resp) {
                    // handle success response
-                   console.log(resp);
-                   FeedbackService.showSuccess("SUCCESS! Please Verify your email address to continue")
-                   
+                   //console.log(resp);
+                   //FeedbackService.showSuccess("SUCCESS! Please Verify your email address to continue")
+                   FeedbackService.showSuccess("Welcome ")
                    $state.go('signIn', {user : resp}, {reload : true});
               }, function(resp) {
                   // handle error response

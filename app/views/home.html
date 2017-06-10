@@ -1,7 +1,7 @@
   <div ng-controller="applicaitonController as appCtrl" ng-cloak >
     
 
-      <div class="demo-layout-transparent" layout="column" flex="100">
+      <div class="demo-layout-transparent" layout="column" flex="100" flex-sm="100">
              <md-sidenav
         class="md-sidenav-left"
         md-component-id="kit-left-sidenav"
@@ -38,11 +38,12 @@
          </div>
         <div layout="row" layout-fill>
          
-        <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options"
+        <carousel3d ng-model = "appCtrl.slides" options="appCtrl.options" class="nonDraggableImage"
             on-selected-click="appCtrl.selectedClick(index)"
             on-slide-change="appCtrl.slideChanged(index)"
             on-last-slide="appCtrl.lastSlide(index)"
-            on-before-change="appCtrl.beforeChange(index)">
+            on-before-change="appCtrl.beforeChange(index)"
+            ng-swipe-right="appCtrl.selectedClick(index)" ng-swipe-left="appCtrl.selectedClick(index)">
         <carousel3d-slide ng-if = "slide" ng-repeat="slide in appCtrl.slides track by slide.id" ng-if = "$index > 0"
             >
             <img id="slide" ng-src="http://image.tmdb.org/t/p/w300{{slide.poster_path}}" layout-fill/>

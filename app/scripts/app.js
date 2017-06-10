@@ -11,6 +11,7 @@
 angular
   .module('dvdRentalFrontendApp', [
     'ngAnimate',
+    'ngTouch',
     'ngAria',
     'ngCookies',,
     'ipCookie',

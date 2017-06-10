@@ -2,7 +2,7 @@
     'use strict';
     angular.module('dvdRentalFrontendApp')
             .controller('applicaitonController',applicaitonController);
-    function applicaitonController($state,PeopleService, MovieService, ShowService, $scope, $mdMedia, $mdSidenav){
+    function applicaitonController($state,PeopleService, MovieService, ShowService, $scope, $mdMedia, $mdSidenav, $auth){
 
         var vm = this;
         vm.state = $state;
@@ -18,32 +18,32 @@
             startSlide: 0,
             border: 3,
             width: 400,
-            dir:'ltr',
             height: 400,
             space: 400,
             clicking: true,
             loop : true,
-            autoRotationSpeed: 18000
+            autoRotationSpeed: 5000,
+            animationSpeed : 1000
        };
 
        vm.selectedClick = selectedClick;
        vm.slideChanged = slideChanged;
        vm.beforeChange = beforeChange;
        vm.lastSlide = lastSlide;
+       vm.signOut = signOut;
 /////////////////////////////////////////////////////////////////
-          activate();
+       activate();
 
         function activate(){
             MovieService.queryAll(function(allMovies){
-                angular.forEach(allMovies, function(movie){
-                    vm.slides.push(movie);
-                })
-              });
-            ShowService.queryAll(function(allShows){
-                angular.forEach(allShows, function(show){
-                    vm.slides.push(show);
-              })
+                vm.slides = vm.slides.concat(allMovies)
+                shuffle(vm.slides);
             });
+            ShowService.queryAll(function(allShows){
+                vm.slides = vm.slides.concat(allShows);
+                shuffle(vm.slides);
+            });
+ 
         }
         
         function toggleSidenav(){
@@ -107,11 +107,11 @@
         }
 
         function selectedClick(index) {
-          //   console.log('Selected Slide Clicked callback triggered. \n == Slide index is: ' + index + ' ==');
+
         }
 
         function slideChanged(index) {
-          //console.log('Slide Changed callback triggered. \n == Slide index is: ' + index + ' ==');
+          selectedClick(index);
         }
 
         $scope.$watch(function() { return $mdMedia('xs') || $mdMedia('gt-sm'); }, function() {
@@ -124,8 +124,18 @@
                 vm.options.height = 400;
                 vm.options.space = 400;
             }
-            console.log($mdMedia('gt-sm'));
         });
+        
+        function signOut(){
+            $auth.signOut()
+            .then(function(resp) {
+              $state.go('signIn', {}, {reload : true});
+            })
+            .catch(function(resp) {
+              // handle error response
+            });
+        }
+        
         
     }
 })();

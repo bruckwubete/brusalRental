@@ -255,7 +255,7 @@
         }
 
         function goSlide(index, motionless, farchange) {
-
+            $interval.cancel(vm.autoRotation);
             if (angular.isFunction(vm.onBeforeChange)) {
                 vm.onBeforeChange({
                     index: carousel3d.currentIndex
@@ -289,6 +289,7 @@
         }
 
         function goNext(farchange) {
+            $interval.cancel(vm.autoRotation);
 
             farchange = (farchange) ? farchange : false;
 
@@ -307,6 +308,8 @@
         }
 
         function goPrev(farchange) {
+            
+            $interval.cancel(vm.autoRotation);
 
             farchange = (farchange) ? farchange : false;
 
@@ -346,6 +349,7 @@
         }
 
         function animationEnd() {
+            $interval.cancel(vm.autoRotation);
             carousel3d.setLock(false);
 
             if (vm.onSlideChange) {
@@ -367,7 +371,7 @@
                 if (!carousel3d.clicking) {
                     return false;
                 } else {
-                    goFar(index);
+                    goSlide(index);
                 }
 
             } else {
