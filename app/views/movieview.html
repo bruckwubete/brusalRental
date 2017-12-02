@@ -118,11 +118,24 @@
           <md-button class=" md-icon-button md-accent"><md-icon>favorite_border</md-icon><md-tooltip>Add to favorites</md-tooltip></md-button>
           <md-button ng-hide="true" class="md-icon-button  md-accent"><md-icon>favorite</md-icon><md-tooltip>Remove form favorites</md-tooltip></md-button>
           <md-button ng-click="movieView.watchTrailer = !movieView.watchTrailer " ng-show="!movieView.watchTrailer" class=" md-icon-button md-accent"><md-icon>play_arrow</md-icon><md-tooltip>Watch Trailer</md-tooltip></md-button>
+          <md-button ng-click="movieView.watchTrailer = !movieView.watchMovie " ng-show="!movieView.watchMovie" class=" md-icon-button md-accent"><md-icon>play_arrow</md-icon><md-tooltip>Watch Movie</md-tooltip></md-button>
         </div>
         <div ng-if="movieView.watchTrailer" layout="column" layout-fill>
           <div layout="row" class="auto-margin">
           <youtube-video dir-paginate="video in movieView.movie.videos | itemsPerPage: 1"  video-id="video.key"></youtube-video>
           <md-button ng-click="movieView.watchTrailer = !movieView.watchTrailer" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
+          </div>
+            <div layout="column"  class="auto-margin">
+              
+          <dir-pagination-controls auto-hide="false" layout-fill boundary-links="true" template-url="../bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+      
+        </div>
+        </div>
+        <video id="video"></video>
+        <div ng-if="movieView.watchMovie" layout="column" layout-fill>
+          <div layout="row" class="auto-margin">
+          <youtube-video dir-paginate="video in movieView.movie.videos | itemsPerPage: 1"  video-id="video.key"></youtube-video>
+          <md-button ng-click="movieView.watchMovie = !movieView.watchMovie" class=" md-icon-button md-accent"><md-icon>cancel</md-icon><md-tooltip>close</md-tooltip></md-button>
           </div>
             <div layout="column"  class="auto-margin">
               

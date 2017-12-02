@@ -28,6 +28,7 @@ angular.module('dvdRentalFrontendApp')
         function getShow(){
             ShowService.get({id : $state.params.id}, function(show){
                 vm.show = show;
+                console.log(show);
             }, function(){
         
             });

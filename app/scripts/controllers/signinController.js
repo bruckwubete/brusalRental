@@ -55,8 +55,8 @@ angular.module('dvdRentalFrontendApp')
               .then(function(resp) {
                    // handle success response
                    //console.log(resp);
-                   //FeedbackService.showSuccess("SUCCESS! Please Verify your email address to continue")
-                   FeedbackService.showSuccess("Welcome ")
+                   FeedbackService.showSuccess("SUCCESS! Please Verify your email address to continue")
+                   //FeedbackService.showSuccess("Welcome ")
                    $state.go('signIn', {user : resp}, {reload : true});
               }, function(resp) {
                   // handle error response

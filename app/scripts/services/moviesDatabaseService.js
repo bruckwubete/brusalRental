@@ -14,6 +14,10 @@ angular.module('dvdRentalFrontendApp')
                    url: 'api/v1/movies/details/:id',
                    method: 'GET',
                 },
+          'watch': {
+                   url: 'api/v1/movies/watch/:id',
+                   method: 'GET',
+                },
           queryAll: {
                     url: 'api/v1/movies/popular',
                     method: 'GET',

@@ -28,6 +28,22 @@ angular.module('dvdRentalFrontendApp')
         function getMovie(){
             MovieService.get({id : $state.params.id}, function(movie){
                 vm.movie = movie;
+                console.log(movie);
+            }, function(){
+        
+            });
+            
+            MovieService.watch({id : $state.params.id}, function(movie){
+                vm.hls = movie.hls
+                console.log(movie)
+                var video = document.getElementById('video');
+                var hls = new Hls();
+                hls.loadSource(movie.hls);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                  video.play();
+                });
+            
             }, function(){
         
             });
@@ -40,6 +56,17 @@ angular.module('dvdRentalFrontendApp')
         function back(){
           $state.go('app.movies', {moviesToShow : $state.params.moviesToShow})
         }
-    
+        
+        function playMovie () {
+            if(Hls.isSupported()) {
+                var video = document.getElementById('video');
+                var hls = new Hls();
+                hls.loadSource(movie.hls);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                  video.play();
+                });
+            }
+        }
 
   });

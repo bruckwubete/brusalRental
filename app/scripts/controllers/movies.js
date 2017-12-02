@@ -64,6 +64,7 @@ angular.module('dvdRentalFrontendApp')
         function search(title){
         if(title){
             MovieService.search({title: title}, function(resp){
+                
                vm.moviesToShow = resp;
             }, function(httpError){
                 console.log(httpError);
